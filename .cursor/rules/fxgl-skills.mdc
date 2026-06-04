@@ -1,0 +1,18 @@
+---
+description: Use the FXGL skill catalog and manifest before generating FXGL code
+globs: []
+alwaysApply: false
+---
+
+# FXGL Skills Rule
+
+For FXGL-related tasks:
+
+1. Check `skills/index.json` to find matching skills.
+2. Read the relevant `skills/*/SKILL.md` files.
+3. Treat those skill files as canonical for this repository.
+4. Verify concrete FXGL APIs against `../core-lib` when available.
+
+Prefer Java 17+ and FXGL 21.x patterns.
+
+Do not invent FXGL APIs or rely on generic JavaFX guidance when FXGL-specific guidance exists.

@@ -1,0 +1,1286 @@
+{
+  "repository": "fxgl-skills",
+  "canonicalFormat": "Markdown with YAML front matter",
+  "sourceOfTruth": "skills/*/SKILL.md",
+  "skillCount": 32,
+  "skills": [
+    {
+      "name": "fxgl-ai-pathfinding",
+      "title": "FXGL AI — Pathfinding, GOAP & Sense AI",
+      "path": "skills/fxgl-ai-pathfinding/SKILL.md",
+      "description": "Implement AI movement and pathfinding in FXGL — set up an AStarGrid, find paths using AStarPathfinder, attach AStarMoveComponent or RandomAStarMoveComponent to entities, implement GOAP (Goal-Oriented Action Planning) with world state and action preconditions, add SenseAI for vision and hearing, set up waypoint patrol routes, generate dungeons and mazes procedurally. Use this skill when making enemies chase the player, implementing patrol behaviours, building GOAP NPC AI, adding pathfinding to a tile-based game, or generating procedural levels.",
+      "triggers": [
+        "A*",
+        "pathfinding",
+        "AStarGrid",
+        "AStarMoveComponent",
+        "GOAP",
+        "enemy AI",
+        "patrol",
+        "chase",
+        "SenseAI",
+        "dungeon generation",
+        "maze",
+        "waypoint",
+        "enemy movement"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/ai",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "ai",
+        "pathfinding"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-animation",
+      "title": "FXGL Animation System",
+      "path": "skills/fxgl-animation/SKILL.md",
+      "description": "Animate entities and JavaFX nodes in FXGL — translate, rotate, scale, and fade entities using AnimationBuilder DSL, play sprite sheet frame animations with AnimatedTexture and AnimationChannel, animate along bezier/path curves, animate JavaFX properties (color, opacity), chain sequential animations, apply easing interpolators, and spawn or despawn entities with built-in scale effects. Use this skill when adding movement tweens, character walk cycles, UI transitions, cutscene animations, or particle-like effects.",
+      "triggers": [
+        "AnimationBuilder",
+        "animate",
+        "tween",
+        "sprite sheet",
+        "AnimatedTexture",
+        "AnimationChannel",
+        "fade in",
+        "fade out",
+        "interpolator",
+        "walk cycle",
+        "animation"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/animation",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "animation"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-audio",
+      "title": "FXGL Audio System",
+      "path": "skills/fxgl-audio/SKILL.md",
+      "description": "Play and manage audio in FXGL — trigger one-shot sound effects, loop background music, control master and per-type volume, load sound and music assets, use the AudioPlayer service directly, and speak text via platform TTS. Use this skill when adding sound effects to game events, playing background music, implementing volume sliders, or integrating text-to-speech dialogue in a game.",
+      "triggers": [
+        "sound effect",
+        "background music",
+        "AudioPlayer",
+        "play sound",
+        "loopBGM",
+        "music volume",
+        "SFX",
+        "wav",
+        "mp3",
+        "text to speech",
+        "TTS",
+        "audio"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. TTS requires fxgl-intelligence module and platform TTS engine.",
+      "category": "fxgl/audio",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "audio"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-bullet-hell",
+      "title": "FXGL Bullet Hell",
+      "path": "skills/fxgl-bullet-hell/SKILL.md",
+      "description": "Build a bullet hell (danmaku) game in FXGL — create a tiny precise hitbox independent of the player sprite, add a graze sensor for near-miss scoring, script spiral and circular aimed bullet patterns, implement phase-based boss attack scripting, add a screen-clearing bomb that removes all enemy bullets, handle invincibility frames on hit, accelerate and decelerate bullets mid-flight, create homing bullets with delayed lock-on, and efficiently manage 1000+ simultaneous bullets on screen. Use this skill when building a danmaku shooter, pattern-based boss, or any game requiring dense bullet patterns and precise hitbox design.",
+      "triggers": [
+        "bullet hell",
+        "danmaku",
+        "spiral pattern",
+        "bullet pattern",
+        "graze",
+        "bomb",
+        "hitbox smaller than sprite",
+        "homing bullet",
+        "1000 bullets",
+        "dense bullets",
+        "boss pattern"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "bullet",
+        "hell"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-card-game",
+      "title": "FXGL Card Game / Deckbuilder",
+      "path": "skills/fxgl-card-game/SKILL.md",
+      "description": "Build a card game or deckbuilder in FXGL — manage a deck with shuffle and draw, display cards in a fanned hand layout with hover effects, implement drag-and-drop or click-to-play card interactions, enforce a mana/energy cost system per turn, define card effects (damage, heal, draw, buff, shield) with a unified interface, manage discard pile and deck reshuffling, implement turn phases (draw/main/end), animate cards flying to the play area, handle targeted card plays with enemy selection, and support a deckbuilding mode for adding/removing cards. Use this skill when building a card game (Slay the Spire, Hearthstone style), deckbuilder, or any game with collectible card mechanics.",
+      "triggers": [
+        "card game",
+        "deckbuilder",
+        "deck",
+        "hand",
+        "card draw",
+        "card play",
+        "mana",
+        "energy",
+        "discard pile",
+        "shuffle",
+        "card effect",
+        "turn phases",
+        "drag card"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "card",
+        "game"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-dev-tools",
+      "title": "FXGL Developer Tools",
+      "path": "skills/fxgl-dev-tools/SKILL.md",
+      "description": "Use FXGL's built-in developer tools during development — enable the developer menu (F1 overlay), inspect all active entities and their components at runtime, use the in-game console to run commands without recompiling, profile FPS and memory with the profiler window, visualise entity bounding boxes and collision shapes, switch application mode between DEVELOPER and RELEASE, register custom dev console commands via DevService, use FXGL.debug() for console logging, and visualise graphs (pathfinding, dialogue, quest) at runtime. Use this skill when debugging game behaviour, tuning AI, stress-testing level generation, inspecting entity state at runtime, or setting up a cheat/test console for development.",
+      "triggers": [
+        "developer menu",
+        "DevService",
+        "devMenu",
+        "devPane",
+        "console command",
+        "profiler",
+        "FPS counter",
+        "bounding box visualisation",
+        "ApplicationMode",
+        "DEVELOPER mode",
+        "RELEASE mode",
+        "entity inspector",
+        "debug camera",
+        "FXGL.debug",
+        "graph visualisation"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/dev",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "dev",
+        "tools"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-economy",
+      "title": "FXGL Inventory & Trade System",
+      "path": "skills/fxgl-economy/SKILL.md",
+      "description": "Implement inventory and trade/shop systems in FXGL — create typed Inventory objects, add/remove/query items, display inventory via InventoryListView, build a Shop with TradeItem buy/sell prices, open a ShopView or TradeView UI, implement buy and sell transactions, manage item stacks and capacity, and wire the shop to NPC collisions. Use this skill when adding an inventory system, item collection, a merchant shop, an upgrade store, or any economy mechanic.",
+      "triggers": [
+        "inventory",
+        "shop",
+        "item",
+        "TradeItem",
+        "buy",
+        "sell",
+        "InventoryListView",
+        "ShopView",
+        "trade",
+        "merchant",
+        "store",
+        "collectible item",
+        "economy"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/economy",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "economy"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-entity-component",
+      "title": "FXGL Entity-Component System",
+      "path": "skills/fxgl-entity-component/SKILL.md",
+      "description": "Create and manage entities in FXGL using the Entity-Component System (ECS) — build entities with EntityBuilder DSL, write EntityFactory spawners with @Spawns, author custom Component subclasses, add state machines (StateComponent), queue actions (ActionComponent), and query the game world. Use this skill when spawning game objects, creating enemy/player logic as components, building entity factories from Tiled maps, or implementing entity behaviours.",
+      "triggers": [
+        "spawn entity",
+        "EntityFactory",
+        "EntityBuilder",
+        "custom component",
+        "entity component",
+        "StateComponent",
+        "game object",
+        "@Spawns"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/ecs",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "ecs",
+        "entity",
+        "component"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-fighting",
+      "title": "FXGL Fighting Game",
+      "path": "skills/fxgl-fighting/SKILL.md",
+      "description": "Build a fighting game in FXGL — implement a character state machine (idle/walk/jump/attack/ hurt/block/knockdown), separate hitbox and hurtbox entities for accurate hit detection, an input buffer for combo and special move recognition, frame-window management (startup/ active/recovery frames), health bar HUD with chip-damage animation, knockback on hit, block mechanics with chip damage, round timer and round structure, and combo counter display. Use this skill when building a 1v1 or 2v2 fighting game, a boss fight with frame-data mechanics, or any game requiring precise hitbox/hurtbox distinction.",
+      "triggers": [
+        "fighting game",
+        "hitbox hurtbox",
+        "combo",
+        "frame data",
+        "input buffer",
+        "knockback",
+        "block",
+        "health bar",
+        "round system",
+        "startup active recovery",
+        "FSM fighter",
+        "character state machine",
+        "special move"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "fighting"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-game-lifecycle",
+      "title": "FXGL Game Lifecycle",
+      "path": "skills/fxgl-game-lifecycle/SKILL.md",
+      "description": "Bootstrap and structure an FXGL game application — set up GameApplication subclass, configure initSettings, initGameVars, initInput, initGame, initPhysics, initUI, and onUpdate. Use this skill when creating a new FXGL game, adding engine services, configuring window size/title, setting application mode, or wiring the game loop.",
+      "triggers": [
+        "create FXGL game",
+        "GameApplication",
+        "initSettings",
+        "initGame",
+        "game loop",
+        "FXGL project setup",
+        "engine service",
+        "game bootstrap"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x, Maven or Gradle. JavaFX runtime must be on the module path.",
+      "category": "fxgl/fundamentals",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "fundamentals",
+        "game",
+        "lifecycle"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-input",
+      "title": "FXGL Input System",
+      "path": "skills/fxgl-input/SKILL.md",
+      "description": "Handle all input in FXGL — bind keyboard keys (held, press, release), mouse buttons and position, virtual on-screen joystick and controller buttons, hardware gamepad via fxgl-controllerinput, capture and replay input recordings, register input combos/sequences, and use the fluent input builder. Use this skill when wiring player controls, implementing key rebinding, adding mobile touch controls, recording demos, or implementing fighting-game combo systems.",
+      "triggers": [
+        "keyboard input",
+        "mouse input",
+        "onKey",
+        "onKeyDown",
+        "UserAction",
+        "virtual joystick",
+        "controller",
+        "input binding",
+        "key combo",
+        "input capture"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Gamepad support requires fxgl-controllerinput module.",
+      "category": "fxgl/input",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "input"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-intelligence",
+      "title": "FXGL Intelligence Module",
+      "path": "skills/fxgl-intelligence/SKILL.md",
+      "description": "Integrate ML-powered intelligence features into an FXGL game via the fxgl-intelligence module — face detection from webcam, hand gesture recognition, hand landmark tracking, speech recognition for voice commands, and platform text-to-speech. Use this skill when building accessibility features, gesture-controlled games, voice-commanded gameplay, facial-expression-driven mechanics, or spoken NPC dialogue.",
+      "triggers": [
+        "face detection",
+        "gesture recognition",
+        "speech recognition",
+        "voice command",
+        "hand tracking",
+        "text to speech",
+        "TTS",
+        "webcam",
+        "ML",
+        "fxgl-intelligence",
+        "facial expression",
+        "hand gesture"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x, fxgl-intelligence module. Requires Python ML backend running locally (see references/ml-backend-setup.md). TTS requires platform speech engine (SAPI/NSS/espeak).",
+      "category": "fxgl/intelligence",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "intelligence"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-level-assets",
+      "title": "FXGL Level Loading & Asset Management",
+      "path": "skills/fxgl-level-assets/SKILL.md",
+      "description": "Load levels and assets in FXGL — import Tiled TMX tile maps (orthogonal and isometric), load text-format levels, switch levels dynamically, use the asset loader for textures, sprite sheets, fonts, sounds, music, FXML, data files, and 3D OBJ models. Map Tiled object-layer objects to entity types via @Spawns. Process textures (crop, flip, tint, outline). Use this skill when setting up a level pipeline, loading a Tiled map, fetching game assets programmatically, or configuring the asset directory structure.",
+      "triggers": [
+        "Tiled",
+        "TMX",
+        "setLevelFromMap",
+        "loadTexture",
+        "AssetLoader",
+        "level loading",
+        "tile map",
+        "@Spawns",
+        "asset directory",
+        "sprite sheet animation"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Tiled map editor must export maps as .tmx (XML).",
+      "category": "fxgl/levels",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "levels",
+        "level",
+        "assets"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-minigames",
+      "title": "FXGL Mini-Game System",
+      "path": "skills/fxgl-minigames/SKILL.md",
+      "description": "Use and extend the FXGL built-in mini-game system — launch lock-picking, sweet-spot, trigger-mash, trigger-sequence (QTE), circuit-breaker, and random-occurrence mini-games via MiniGameService, handle success/failure results, configure difficulty, and author custom mini-games. Use this skill when adding interactive skill-check moments, lock-picking mechanics, quick-time events, button-mashing sequences, or any mini-game overlay.",
+      "triggers": [
+        "mini game",
+        "minigame",
+        "MiniGameService",
+        "lock pick",
+        "sweet spot",
+        "QTE",
+        "quick time event",
+        "trigger mash",
+        "circuit breaker",
+        "random occurrence"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. MiniGameService must be registered.",
+      "category": "fxgl/minigames",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "minigames"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-multiplayer",
+      "title": "FXGL Multiplayer & Networking",
+      "path": "skills/fxgl-multiplayer/SKILL.md",
+      "description": "Add multiplayer and networking to an FXGL game — create TCP or WebSocket servers and clients via NetService, replicate entity spawns/positions/destruction across clients using MultiplayerService and NetworkComponent, synchronise player input, send and receive custom protocol messages, handle connect/disconnect events, and download files asynchronously. Use this skill when building a multiplayer game, a client-server architecture, a real-time entity sync system, or any network-connected feature in FXGL.",
+      "triggers": [
+        "multiplayer",
+        "network",
+        "NetService",
+        "MultiplayerService",
+        "NetworkComponent",
+        "TCP server",
+        "WebSocket",
+        "entity replication",
+        "server client",
+        "online game"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Network requires open ports and matching client/server FXGL versions.",
+      "category": "fxgl/multiplayer",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "multiplayer"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-narrative",
+      "title": "FXGL Narrative System",
+      "path": "skills/fxgl-narrative/SKILL.md",
+      "description": "Implement cutscenes, dialogue, and video scenes in FXGL — create text cutscenes with CutsceneService, load and play branching dialogue graphs from JSON, run the DialogueScriptRunner with function nodes, play video cutscene files, trigger narrative scenes from collision or game events, and build custom dialogue UI. Use this skill when adding story sequences, NPC conversations, intro/outro scenes, branching player choices, or scripted in-game events.",
+      "triggers": [
+        "cutscene",
+        "dialogue",
+        "DialogueGraph",
+        "CutsceneService",
+        "branching dialogue",
+        "NPC conversation",
+        "VideoScene",
+        "narrative",
+        "story",
+        "dialogue tree",
+        "script runner"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. CutsceneService must be registered. Video requires JavaFX Media.",
+      "category": "fxgl/narrative",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "narrative"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-particles-effects",
+      "title": "FXGL Particle System & Visual Effects",
+      "path": "skills/fxgl-particles-effects/SKILL.md",
+      "description": "Add particle systems and visual effects to an FXGL game — configure ParticleEmitter with emission rate, size, speed, lifetime, color, and blend mode; use built-in factory emitters (fire, explosion, smoke, rain); attach TrailParticleComponent for motion trails; apply SlowTimeEffect for bullet-time; apply WobbleEffect for screen-shake; stack multiple effects with EffectComponent; create image-to-particle animations; build fireworks displays. Use this skill when adding explosions, fire, smoke, rain, motion trails, impact bursts, bullet-time slow-motion, screen shake, or any particle-based visual polish.",
+      "triggers": [
+        "particle",
+        "emitter",
+        "ParticleEmitter",
+        "explosion",
+        "fire effect",
+        "smoke",
+        "rain",
+        "trail",
+        "TrailParticleComponent",
+        "EffectComponent",
+        "SlowTimeEffect",
+        "WobbleEffect",
+        "screen shake",
+        "bullet time",
+        "visual effect",
+        "fireworks",
+        "particle system"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/effects",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "effects",
+        "particles"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-physics-collision",
+      "title": "FXGL Physics & Collision",
+      "path": "skills/fxgl-physics-collision/SKILL.md",
+      "description": "Configure Box2D physics in FXGL — add PhysicsComponent to entities, set body types (DYNAMIC, STATIC, KINEMATIC), define fixture properties (density, friction, restitution), handle collision callbacks (onCollisionBegin, onCollision, onCollisionEnd), detect collectibles, filter collisions, perform raycasting, and set up gravity. Use this skill when adding physics to a game, implementing platformer jump/gravity, handling bullet hits, detecting player picking up items, or setting up wall/floor colliders.",
+      "triggers": [
+        "Box2D",
+        "PhysicsComponent",
+        "collision",
+        "gravity",
+        "physics body",
+        "BodyType",
+        "raycast",
+        "platformer physics",
+        "onCollisionBegin"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x — Box2D is bundled, no extra dependency needed.",
+      "category": "fxgl/physics",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "physics",
+        "collision"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-platformer",
+      "title": "FXGL Platformer",
+      "path": "skills/fxgl-platformer/SKILL.md",
+      "description": "Build a side-scrolling platformer in FXGL — set up physics with gravity for a player entity, implement jump with coyote time and jump buffer, handle one-way pass-through platforms, attach moving kinematic platforms the player can ride, bind the camera viewport to the player with world bounds, add parallax scrolling background layers, load Tiled TMX levels with solid tile collision, detect pit/fall-out-of-bounds deaths, stomp enemies from above, and implement a checkpoint and respawn system. Use this skill when building a Mario-style, precision platformer, run-and-jump, or any side-scrolling game with gravity-driven movement.",
+      "triggers": [
+        "platformer",
+        "side-scroller",
+        "jump",
+        "gravity",
+        "platform",
+        "coyote time",
+        "jump buffer",
+        "one-way platform",
+        "moving platform",
+        "parallax",
+        "stomp",
+        "Mario-style"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "platformer"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-procedural",
+      "title": "FXGL Procedural Generation",
+      "path": "skills/fxgl-procedural/SKILL.md",
+      "description": "Generate procedural content in FXGL — create random dungeon layouts with DungeonGenerator and DungeonConfig (room size, count, grid dimensions), generate perfect mazes with MazeGenerator, convert generated Grid2D cells to spawned game entities via EntityFactory, seed generation for reproducible levels, mark special rooms (start, boss, treasure), solve generated mazes with A*, and integrate procedural levels with SaveLoadService for level codes. Use this skill when building a roguelike, endless runner, procedurally generated dungeon crawler, or any game where levels are generated at runtime rather than hand-crafted.",
+      "triggers": [
+        "procedural",
+        "dungeon generation",
+        "DungeonGenerator",
+        "DungeonConfig",
+        "MazeGenerator",
+        "random level",
+        "Grid2D",
+        "DungeonCell",
+        "MazeCell",
+        "roguelike",
+        "procedural generation",
+        "random dungeon",
+        "level generation",
+        "seeded",
+        "level code"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/procedural",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "procedural"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-progression",
+      "title": "FXGL Achievements & Quest System",
+      "path": "skills/fxgl-progression/SKILL.md",
+      "description": "Implement achievements and quests in FXGL — define variable-tracked achievements in initSettings, listen for AchievementEvent, create quests with int/boolean objectives via QuestService, start/fail/complete quests, observe quest state changes, and chain objectives. Use this skill when adding an achievement system, implementing quest tracking, wiring game variables to unlockable goals, or building a quest log UI.",
+      "triggers": [
+        "achievement",
+        "quest",
+        "AchievementService",
+        "QuestService",
+        "objective",
+        "unlock",
+        "quest log",
+        "player progression",
+        "milestone",
+        "AchievementEvent"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. QuestService must be registered via addEngineService.",
+      "category": "fxgl/progression",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "progression"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-racing",
+      "title": "FXGL Top-Down Racing",
+      "path": "skills/fxgl-racing/SKILL.md",
+      "description": "Build a top-down racing game in FXGL — implement vehicle physics with forward thrust, steering, friction, and drift, create a circuit track with ordered checkpoint gates for lap counting, add AI opponents following a predefined racing line with waypoints, handle car-wall collisions with bounce-back, add power-up pickups on track (boost, shield, attack), track race position (1st/2nd/3rd), display lap timer and best lap, and implement a ghost replay system for time trials. Use this skill when building a top-down racer, kart racer, circuit racing game, or any vehicle-control game with lap-based competition.",
+      "triggers": [
+        "racing",
+        "top-down racing",
+        "car physics",
+        "lap counter",
+        "checkpoint",
+        "racing line",
+        "AI racer",
+        "drift",
+        "kart",
+        "circuit",
+        "ghost replay",
+        "race position"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "racing"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-roguelike",
+      "title": "FXGL Roguelike / Roguelite",
+      "path": "skills/fxgl-roguelike/SKILL.md",
+      "description": "Build a roguelike or roguelite game in FXGL — structure runs with a full state reset on death, save only meta-progression permanently, generate a new procedural dungeon each run with DungeonGenerator, implement weighted RNG loot tables, show 3-choice item offer screens, track run statistics (kills, gold, floor depth), gate boss fights at milestone floors, implement item synergies where items modify each other's effects, add curse mechanics as item downsides, and integrate a prestige/unlock system for permanent cross-run improvements. Use this skill when building a roguelike, roguelite, dungeon crawler, run-based game, or any permadeath game with procedural content.",
+      "triggers": [
+        "roguelike",
+        "roguelite",
+        "permadeath",
+        "run-based",
+        "procedural dungeon",
+        "loot table",
+        "item offer",
+        "meta-progression",
+        "prestige",
+        "run reset",
+        "floor depth",
+        "curse mechanic",
+        "item synergy"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "roguelike"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-rpg",
+      "title": "FXGL RPG / JRPG",
+      "path": "skills/fxgl-rpg/SKILL.md",
+      "description": "Build an RPG or JRPG in FXGL — define character stats (ATK, DEF, HP, MP, SPD, XP/level), implement an experience and leveling system with stat growth, create a turn-based battle scene that transitions from overworld exploration, build an equipment system that modifies effective stats, implement status effects (poison, stun, burn) that persist across turns, define abilities with MP cost and target types, trigger encounters on NPC contact or random steps, display a battle menu (Attack/Skill/Item/Run), show loot and XP rewards on victory, and save the full party state with SaveLoadService. Use this skill when building a classic RPG, JRPG, turn-based adventure, or any game with stats, leveling, and structured battle sequences.",
+      "triggers": [
+        "RPG",
+        "JRPG",
+        "turn-based battle",
+        "stats",
+        "ATK DEF HP MP",
+        "leveling",
+        "XP experience",
+        "equipment",
+        "status effect",
+        "ability",
+        "random encounter",
+        "battle scene",
+        "party system",
+        "overworld"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "rpg"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-save-load",
+      "title": "FXGL Save & Load System",
+      "path": "skills/fxgl-save-load/SKILL.md",
+      "description": "Implement save and load functionality in FXGL — use SaveLoadService to persist and restore game state, write/read DataFile via writeSaveState and readSaveState hooks, manage named save slots, implement auto-save on checkpoints, integrate save/load into the game menu, and handle save file existence checks. Use this skill when adding a save system, implementing slot-based saves, restoring game progress between sessions, or handling checkpoint saves.",
+      "triggers": [
+        "save game",
+        "load game",
+        "SaveLoadService",
+        "DataFile",
+        "writeSaveState",
+        "readSaveState",
+        "save slot",
+        "checkpoint",
+        "persist",
+        "game progress"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Save files stored in user home ~/.fxgl/{AppTitle}/saves/.",
+      "category": "fxgl/persistence",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "persistence",
+        "save",
+        "load"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-scene3d",
+      "title": "FXGL 3D Scene",
+      "path": "skills/fxgl-scene3d/SKILL.md",
+      "description": "Build 3D scenes in FXGL — enable experimental 3D mode, set up Camera3D with free-look or follow-entity modes, load OBJ models via AssetLoader, spawn 3D entities with Model3D views, create built-in 3D primitives (Cuboid, Prism, Torus, Cylinder, Cone), add a six-face Skybox, animate 3D entities with AnimationBuilder, implement 3D collision with PhysicsComponent3D, build a third-person camera, and create Minecraft-style voxel worlds. Use this skill when building a 3D game, a 3D level, a first-person or third-person view, a 3D model viewer, or any JavaFX 3D scene within FXGL.",
+      "triggers": [
+        "3D",
+        "Camera3D",
+        "OBJ model",
+        "Model3D",
+        "Skybox",
+        "Cuboid",
+        "Prism",
+        "Torus",
+        "3D primitives",
+        "3D collision",
+        "third person",
+        "voxel",
+        "3D scene",
+        "setExperimental3D",
+        "PhysicsComponent3D",
+        "3D animation"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Requires JavaFX with 3D hardware support.",
+      "category": "fxgl/3d",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "3d",
+        "scene3d"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-shmup",
+      "title": "FXGL Shoot 'em Up (Shmup)",
+      "path": "skills/fxgl-shmup/SKILL.md",
+      "description": "Build a shoot 'em up (shmup) in FXGL — implement auto-scrolling background for vertical or horizontal scrollers, spawn enemy formations with timer-based waves, fire player bullets toward the scroll direction, script enemy bullet fan/ring/aimed patterns with ProjectileComponent, add power-up collectibles that upgrade weapons (spread shot, laser, shield), implement a lives-and-respawn system, build multi-phase boss fights, track score with chain multipliers, and despawn off-screen entities efficiently. Use this skill when building a space shooter, bullet shooter, vertical shmup, horizontal shmup, forced-scroll shooter, or any game in the shoot 'em up genre.",
+      "triggers": [
+        "shmup",
+        "shoot em up",
+        "space shooter",
+        "vertical shooter",
+        "horizontal shooter",
+        "scrolling shooter",
+        "formation",
+        "wave spawner",
+        "bullet pattern",
+        "power-up weapon",
+        "lives system",
+        "boss fight phases",
+        "score multiplier"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "shmup"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-stealth",
+      "title": "FXGL Stealth Game",
+      "path": "skills/fxgl-stealth/SKILL.md",
+      "description": "Build a stealth game in FXGL — implement a conical vision field for guards with configurable range and angle, line-of-sight raycasting blocked by wall entities, a three-state detection machine (unaware/suspicious/alerted), a detection meter that fills while in sight and decays out of sight, waypoint patrol routes that pause on detection, a noise system where player actions emit a radius heard by nearby guards, hiding spots (shadows/lockers) that suppress detection, non-lethal takedown mechanics, and an alarm system where alerted guards call for backup. Use this skill when building a stealth game, espionage game, guard-avoidance puzzle, or any game requiring line-of-sight and detection mechanics.",
+      "triggers": [
+        "stealth",
+        "guard",
+        "line of sight",
+        "detection",
+        "FOV cone",
+        "patrol",
+        "noise",
+        "hiding",
+        "shadow",
+        "alert",
+        "suspicious",
+        "takedown",
+        "vision cone"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "stealth"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-topdown",
+      "title": "FXGL Top-Down 2D",
+      "path": "skills/fxgl-topdown/SKILL.md",
+      "description": "Build a top-down 2D game in FXGL — disable gravity for the physics world, implement 8-direction normalized movement, bind the camera to follow the player with world bounds, aim and fire projectiles toward the mouse cursor, spawn a melee attack hitbox in the facing direction, trigger NPC interactions on proximity, handle area/room transitions at screen edges, display a minimap with entity dots, and load Tiled TMX tile-based worlds. Use this skill when building a Zelda-style adventure, twin-stick shooter, top-down RPG, arena shooter, or any bird's-eye-view 2D game.",
+      "triggers": [
+        "top-down",
+        "bird's eye",
+        "8-direction",
+        "twin-stick",
+        "top-down RPG",
+        "Zelda-style",
+        "arena shooter",
+        "no gravity",
+        "top-down movement",
+        "aim at mouse"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "topdown"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-tower-defense",
+      "title": "FXGL Tower Defense",
+      "path": "skills/fxgl-tower-defense/SKILL.md",
+      "description": "Build a tower defense game in FXGL — implement waypoint-following enemies with WaypointMoveComponent, create a boolean grid for tower placement that excludes path cells, implement tower targeting logic (nearest/strongest/first enemy in range), fire projectiles from towers at enemies, build a wave-based enemy spawning system with configurable intervals, add gold rewards on enemy kills, deduct player lives when enemies reach the exit, implement tower sell/upgrade mechanics, preview tower range with a circle overlay, and support multiple tower types (basic, slow, splash, chain). Use this skill when building a tower defense game, lane defense, or any game where the player places defensive structures against waves of path-following enemies.",
+      "triggers": [
+        "tower defense",
+        "waypoint enemy",
+        "tower placement",
+        "wave system",
+        "tower range",
+        "enemy path",
+        "tower targeting",
+        "splash tower",
+        "slow tower",
+        "buy tower",
+        "sell tower"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "tower",
+        "defense"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-ui-scenes",
+      "title": "FXGL UI & Scene System",
+      "path": "skills/fxgl-ui-scenes/SKILL.md",
+      "description": "Build HUD, menus, dialogs, overlays, and scenes in FXGL — add UI nodes to the HUD, create custom main and game menus via SceneFactory, open modal dialogs (message, confirm, input, error, progress), push in-game notifications, implement GameSubScene overlays, bind text to game variables, control viewport and camera-follow, integrate FXML layouts, apply custom CSS, use nine-slice scaling images, add scrolling backgrounds, and add a minimap. Use this skill for anything related to game UI, HUD, screen transitions, or in-game menus.",
+      "triggers": [
+        "HUD",
+        "menu",
+        "dialog",
+        "notification",
+        "GameSubScene",
+        "addUINode",
+        "viewport",
+        "camera follow",
+        "FXML",
+        "CSS",
+        "minimap",
+        "scrolling background",
+        "custom menu",
+        "scene",
+        "UIFactory"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x, JavaFX FXML for FXML features.",
+      "category": "fxgl/ui",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "ui",
+        "scenes"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-variables-events",
+      "title": "FXGL Variables & Events",
+      "path": "skills/fxgl-variables-events/SKILL.md",
+      "description": "Manage reactive game state in FXGL — declare typed world variables in initGameVars, read/write/increment them via DSL, bind JavaFX UI properties to live variable values, register property-change listeners triggered at specific thresholds, fire and subscribe to custom events on the EventBus, use the built-in game timer (runOnce, runAtInterval), and create offline timers that persist between sessions. Use this skill when tracking score, lives, time, game flags, wiring HUD to game state, implementing event-driven logic, or scheduling delayed/recurring actions.",
+      "triggers": [
+        "game variable",
+        "initGameVars",
+        "EventBus",
+        "property binding",
+        "reactive",
+        "inc",
+        "geti",
+        "getip",
+        "onIntChangeTo",
+        "game timer",
+        "runOnce",
+        "runAtInterval",
+        "world properties",
+        "fire event"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/state",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "state",
+        "variables",
+        "events"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    }
+  ]
+}

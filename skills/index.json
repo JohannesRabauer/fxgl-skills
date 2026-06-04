@@ -2,7 +2,188 @@
   "repository": "fxgl-skills",
   "canonicalFormat": "Markdown with YAML front matter",
   "sourceOfTruth": "skills/*/SKILL.md",
-  "skillCount": 41,
+  "skillCount": 49,
+  "skillGroups": {
+    "game-types-2d": [
+      "fxgl-brawler",
+      "fxgl-breakout",
+      "fxgl-bullet-hell",
+      "fxgl-card-game",
+      "fxgl-endless-runner",
+      "fxgl-fighting",
+      "fxgl-idle-clicker",
+      "fxgl-match3",
+      "fxgl-metroidvania",
+      "fxgl-pinball",
+      "fxgl-platformer",
+      "fxgl-racing",
+      "fxgl-rhythm",
+      "fxgl-roguelike",
+      "fxgl-rpg",
+      "fxgl-shmup",
+      "fxgl-snake",
+      "fxgl-stealth",
+      "fxgl-strategy-rts",
+      "fxgl-tactical-rpg",
+      "fxgl-topdown",
+      "fxgl-tower-defense",
+      "fxgl-visual-novel"
+    ],
+    "game-types-3d": [
+      "fxgl-fps-3d",
+      "fxgl-third-person-3d",
+      "fxgl-voxel"
+    ]
+  },
+  "useCaseCoverage": {
+    "docs/uc-ai.md": [
+      "fxgl-ai-pathfinding"
+    ],
+    "docs/uc-animation.md": [
+      "fxgl-animation"
+    ],
+    "docs/uc-asset-sourcing-attribution.md": [
+      "fxgl-asset-sourcing-attribution"
+    ],
+    "docs/uc-audio.md": [
+      "fxgl-audio"
+    ],
+    "docs/uc-dev-tools.md": [
+      "fxgl-dev-tools"
+    ],
+    "docs/uc-economy.md": [
+      "fxgl-economy"
+    ],
+    "docs/uc-entity-component-system.md": [
+      "fxgl-entity-component"
+    ],
+    "docs/uc-game-lifecycle.md": [
+      "fxgl-game-lifecycle"
+    ],
+    "docs/uc-input.md": [
+      "fxgl-input"
+    ],
+    "docs/uc-intelligence.md": [
+      "fxgl-intelligence"
+    ],
+    "docs/uc-level-assets.md": [
+      "fxgl-level-assets"
+    ],
+    "docs/uc-minigames.md": [
+      "fxgl-minigames"
+    ],
+    "docs/uc-multiplayer.md": [
+      "fxgl-multiplayer"
+    ],
+    "docs/uc-narrative.md": [
+      "fxgl-narrative"
+    ],
+    "docs/uc-particles-effects.md": [
+      "fxgl-particles-effects"
+    ],
+    "docs/uc-physics-collision.md": [
+      "fxgl-physics-collision"
+    ],
+    "docs/uc-placeholder-art-prompts.md": [
+      "fxgl-placeholder-art-prompts"
+    ],
+    "docs/uc-procedural.md": [
+      "fxgl-procedural"
+    ],
+    "docs/uc-progression.md": [
+      "fxgl-progression"
+    ],
+    "docs/uc-save-load.md": [
+      "fxgl-save-load"
+    ],
+    "docs/uc-scene3d.md": [
+      "fxgl-scene3d"
+    ],
+    "docs/uc-ui-scenes.md": [
+      "fxgl-ui-scenes"
+    ],
+    "docs/uc-variables-events.md": [
+      "fxgl-variables-events"
+    ],
+    "docs/gt-brawler.md": [
+      "fxgl-brawler"
+    ],
+    "docs/gt-breakout.md": [
+      "fxgl-breakout"
+    ],
+    "docs/gt-bullet-hell.md": [
+      "fxgl-bullet-hell"
+    ],
+    "docs/gt-card-game.md": [
+      "fxgl-card-game"
+    ],
+    "docs/gt-endless-runner.md": [
+      "fxgl-endless-runner"
+    ],
+    "docs/gt-fighting.md": [
+      "fxgl-fighting"
+    ],
+    "docs/gt-fps-3d.md": [
+      "fxgl-fps-3d"
+    ],
+    "docs/gt-idle-clicker.md": [
+      "fxgl-idle-clicker"
+    ],
+    "docs/gt-match3.md": [
+      "fxgl-match3"
+    ],
+    "docs/gt-metroidvania.md": [
+      "fxgl-metroidvania"
+    ],
+    "docs/gt-pinball.md": [
+      "fxgl-pinball"
+    ],
+    "docs/gt-platformer.md": [
+      "fxgl-platformer"
+    ],
+    "docs/gt-racing.md": [
+      "fxgl-racing"
+    ],
+    "docs/gt-rhythm.md": [
+      "fxgl-rhythm"
+    ],
+    "docs/gt-roguelike.md": [
+      "fxgl-roguelike"
+    ],
+    "docs/gt-rpg.md": [
+      "fxgl-rpg"
+    ],
+    "docs/gt-shmup.md": [
+      "fxgl-shmup"
+    ],
+    "docs/gt-snake.md": [
+      "fxgl-snake"
+    ],
+    "docs/gt-stealth.md": [
+      "fxgl-stealth"
+    ],
+    "docs/gt-strategy-rts.md": [
+      "fxgl-strategy-rts"
+    ],
+    "docs/gt-tactical.md": [
+      "fxgl-tactical-rpg"
+    ],
+    "docs/gt-third-person-3d.md": [
+      "fxgl-third-person-3d"
+    ],
+    "docs/gt-topdown.md": [
+      "fxgl-topdown"
+    ],
+    "docs/gt-tower-defense.md": [
+      "fxgl-tower-defense"
+    ],
+    "docs/gt-visual-novel.md": [
+      "fxgl-visual-novel"
+    ],
+    "docs/gt-voxel.md": [
+      "fxgl-voxel"
+    ]
+  },
   "skills": [
     {
       "name": "fxgl-ai-pathfinding",
@@ -190,6 +371,43 @@
         "javafx",
         "game-types",
         "brawler"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-breakout",
+      "title": "FXGL Breakout / Arkanoid",
+      "path": "skills/fxgl-breakout/SKILL.md",
+      "description": "Build a Breakout or Arkanoid style game in FXGL — control a paddle horizontally, keep a ball at constant speed, bounce it off walls, paddle, and bricks, load brick layouts from level data, angle the reflection based on paddle hit position, handle lives and bottom-drain loss, spawn falling power-ups, and finish the level when all breakable bricks are destroyed.",
+      "triggers": [
+        "breakout",
+        "arkanoid",
+        "paddle ball",
+        "brick breaker",
+        "multiball",
+        "paddle bounce",
+        "brick hp",
+        "power-up drop",
+        "lose life on drain"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Uses FXGL 2D physics and collision handlers.",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "breakout"
       ],
       "metadata": {
         "author": "fxgl-skills",
@@ -487,6 +705,43 @@
       ]
     },
     {
+      "name": "fxgl-fps-3d",
+      "title": "FXGL First-Person 3D",
+      "path": "skills/fxgl-fps-3d/SKILL.md",
+      "description": "Build a first-person 3D game in FXGL — set up a player-driven Camera3D, implement mouse look, move relative to the camera facing direction, add a crosshair HUD, raycast or pick 3D targets, simulate gravity and jumping, and manage a first-person weapon or interaction model. Use this skill for FPS, first-person exploration, or first-person puzzle prototypes built on FXGL's 3D scene support.",
+      "triggers": [
+        "fps",
+        "first person",
+        "fps 3d",
+        "mouse look",
+        "crosshair",
+        "hitscan",
+        "camera3d shooter",
+        "3d raycast"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Requires `settings.setExperimental3D(true)` and JavaFX 3D support. Builds on the primitives in fxgl-scene3d.",
+      "category": "fxgl/3d",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "3d",
+        "game-types",
+        "fps"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-game-lifecycle",
       "title": "FXGL Game Lifecycle",
       "path": "skills/fxgl-game-lifecycle/SKILL.md",
@@ -510,6 +765,43 @@
         "fundamentals",
         "game",
         "lifecycle"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-idle-clicker",
+      "title": "FXGL Idle / Clicker Game",
+      "path": "skills/fxgl-idle-clicker/SKILL.md",
+      "description": "Build an incremental idle or clicker game in FXGL — click for resources, buy auto-producers, scale costs exponentially, show passive income in the HUD, unlock upgrades by milestones, calculate capped offline progress on load, format very large numbers, and implement prestige resets with permanent bonuses.",
+      "triggers": [
+        "idle game",
+        "clicker",
+        "incremental",
+        "passive income",
+        "offline progress",
+        "prestige",
+        "big number formatting",
+        "auto producer"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Pairs naturally with fxgl-save-load, fxgl-progression, and fxgl-ui-scenes.",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "idle",
+        "clicker"
       ],
       "metadata": {
         "author": "fxgl-skills",
@@ -664,6 +956,43 @@
         "javafx",
         "game-types",
         "match3"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-metroidvania",
+      "title": "FXGL Metroidvania",
+      "path": "skills/fxgl-metroidvania/SKILL.md",
+      "description": "Build a Metroidvania in FXGL — connect multiple platforming rooms, transition between Tiled maps at screen edges, gate progression behind movement abilities, persist room state and item pickups, add a map overlay for explored rooms, support save points and fast travel, and handle backtracking through an interconnected world.",
+      "triggers": [
+        "metroidvania",
+        "ability gate",
+        "room transition",
+        "save statue",
+        "map overlay",
+        "double jump",
+        "wall slide",
+        "dash",
+        "backtracking"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Combines patterns from fxgl-platformer, fxgl-level-assets, fxgl-ui-scenes, and fxgl-save-load.",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "metroidvania"
       ],
       "metadata": {
         "author": "fxgl-skills",
@@ -1109,6 +1438,44 @@
       ]
     },
     {
+      "name": "fxgl-rhythm",
+      "title": "FXGL Rhythm Game",
+      "path": "skills/fxgl-rhythm/SKILL.md",
+      "description": "Build a rhythm game in FXGL — parse a beatmap, spawn notes early enough to scroll into a hit zone on time, score inputs by timing window, handle combo and grades, support hold notes, and keep chart timing aligned with audio as closely as FXGL's current audio API allows.",
+      "triggers": [
+        "rhythm game",
+        "beatmap",
+        "note highway",
+        "timing window",
+        "perfect good miss",
+        "combo multiplier",
+        "hold note",
+        "osu",
+        "guitar hero"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Audio playback is available, but FXGL's public AudioPlayer API does not expose authoritative music position, so chart timing must be driven by engine time or a custom integration layer.",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "rhythm",
+        "audio"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-roguelike",
       "title": "FXGL Roguelike / Roguelite",
       "path": "skills/fxgl-roguelike/SKILL.md",
@@ -1316,6 +1683,42 @@
       ]
     },
     {
+      "name": "fxgl-snake",
+      "title": "FXGL Snake",
+      "path": "skills/fxgl-snake/SKILL.md",
+      "description": "Build a Snake game in FXGL — move on a discrete grid by timer steps, store the body as a deque of grid cells, grow when food is eaten, buffer direction changes, detect self-collision and wall rules, increase speed as the snake grows, and support multiple food types or wrap mode.",
+      "triggers": [
+        "snake",
+        "grid movement",
+        "deque body",
+        "food spawn",
+        "no 180 turn",
+        "wrap mode",
+        "self collision",
+        "step timer"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x.",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "snake"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-stealth",
       "title": "FXGL Stealth Game",
       "path": "skills/fxgl-stealth/SKILL.md",
@@ -1403,6 +1806,11 @@
       "triggers": [
         "tactical rpg",
         "trpg",
+        "tactical",
+        "turn-based tactical",
+        "grid tactics",
+        "xcom",
+        "fire emblem",
         "grid combat",
         "turn order",
         "action points",
@@ -1421,6 +1829,42 @@
         "game-types",
         "tactical",
         "rpg"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-third-person-3d",
+      "title": "FXGL Third-Person 3D",
+      "path": "skills/fxgl-third-person-3d/SKILL.md",
+      "description": "Build a third-person 3D game in FXGL — orbit a camera behind the player, move the character relative to camera direction, rotate the player to face travel direction, jump with manual 3D gravity, smooth the camera with a spring arm, avoid camera clipping, and optionally add lock-on combat behavior.",
+      "triggers": [
+        "third person 3d",
+        "third person",
+        "orbit camera",
+        "spring arm",
+        "lock on",
+        "camera clipping",
+        "player faces movement"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Requires FXGL 3D mode and builds on fxgl-scene3d.",
+      "category": "fxgl/3d",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "3d",
+        "game-types",
+        "third-person"
       ],
       "metadata": {
         "author": "fxgl-skills",
@@ -1623,6 +2067,43 @@
         "game-types",
         "visual",
         "novel"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-voxel",
+      "title": "FXGL Voxel World",
+      "path": "skills/fxgl-voxel/SKILL.md",
+      "description": "Build a voxel or Minecraft-style game in FXGL — store a chunked block grid, generate terrain, place and remove blocks by 3D picking, highlight selected voxels, manage a hotbar of block types, rebuild visible chunk geometry after edits, and save modified chunk data. Use this skill for sandbox voxel worlds, block-building prototypes, or destructible cubic terrain.",
+      "triggers": [
+        "voxel",
+        "minecraft",
+        "chunk",
+        "block world",
+        "place block",
+        "break block",
+        "chunk mesh",
+        "terrain generation"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Requires FXGL 3D mode and builds on fxgl-scene3d.",
+      "category": "fxgl/3d",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "3d",
+        "game-types",
+        "voxel"
       ],
       "metadata": {
         "author": "fxgl-skills",

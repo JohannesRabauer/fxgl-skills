@@ -49,6 +49,33 @@ This keeps the repository readable as plain Markdown while still being easy to i
 4. When API details matter, verify them against the adjacent FXGL source repository at
    `../core-lib`.
 
+## Game-type skill groups
+
+Game-type skills are grouped in two ways:
+
+- human-facing lists in this README
+- machine-readable groups in `skills/index.json` under `skillGroups`
+
+### 2D game-type skills
+
+`fxgl-brawler`, `fxgl-breakout`, `fxgl-bullet-hell`, `fxgl-card-game`, `fxgl-endless-runner`,
+`fxgl-fighting`, `fxgl-idle-clicker`, `fxgl-match3`, `fxgl-metroidvania`, `fxgl-pinball`,
+`fxgl-platformer`, `fxgl-racing`, `fxgl-rhythm`, `fxgl-roguelike`, `fxgl-rpg`, `fxgl-shmup`,
+`fxgl-snake`, `fxgl-stealth`, `fxgl-strategy-rts`, `fxgl-tactical-rpg`, `fxgl-topdown`,
+`fxgl-tower-defense`, `fxgl-visual-novel`
+
+### 3D game-type skills
+
+`fxgl-fps-3d`, `fxgl-third-person-3d`, `fxgl-voxel`
+
+For generic 3D primitives, models, and camera setup, use `fxgl-scene3d` alongside the 3D
+game-type skill.
+
+### Coverage notes
+
+- `docs/uc-overview.md` is a catalog / index document, not a single skill target.
+- `docs/gt-tactical.md` is covered by `fxgl-tactical-rpg`.
+
 ## Compatibility notes
 
 - Baseline target: **Java 17+**

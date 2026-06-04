@@ -9,8 +9,9 @@ description: >
   applied per turn.
   Use this skill when building a Final Fantasy Tactics style TRPG, grid combat game, turn-based
   strategy RPG, or any game with tile-based unit movement and turn-order combat.
-  Triggers on: "tactical rpg", "trpg", "grid combat", "turn order", "action points",
-  "movement range", "bfs range", "line of sight ranged", "status effect turn", "hex grid combat".
+  Triggers on: "tactical rpg", "trpg", "tactical", "turn-based tactical", "grid tactics",
+  "xcom", "fire emblem", "grid combat", "turn order", "action points", "movement range",
+  "bfs range", "line of sight ranged", "status effect turn", "hex grid combat".
 compatibility: Java 17+, FXGL 21.x
 metadata:
   author: fxgl-skills

@@ -1,9 +1,10 @@
 # FXGL AI Coding Skills — Use-Case Catalogue
 
-This catalogue documents all relevant use-cases derived from the FXGL core library
-(`com.almasb.fxgl`) and its sample projects. Each file contains one or more
-Mermaid diagrams covering a specific domain. These use-cases define the scope of
-AI coding skills that can be implemented to assist developers building games with FXGL.
+This catalogue documents relevant use-cases derived from the FXGL core library
+(`com.almasb.fxgl`), its sample projects, and adjacent production workflows that
+materially affect FXGL game development. Each file contains one or more Mermaid
+diagrams covering a specific domain. These use-cases define the scope of AI coding
+skills that can be implemented to assist developers building games with FXGL.
 
 ## Domain Index
 
@@ -31,6 +32,8 @@ AI coding skills that can be implemented to assist developers building games wit
 | [uc-scene3d.md](uc-scene3d.md) | 3D scene, camera and model loading |
 | [uc-procedural.md](uc-procedural.md) | Procedural dungeon and maze generation |
 | [uc-dev-tools.md](uc-dev-tools.md) | Developer console, entity inspector and profiler |
+| [uc-asset-sourcing-attribution.md](uc-asset-sourcing-attribution.md) | Free asset sourcing, attribution and FXGL project intake |
+| [uc-placeholder-art-prompts.md](uc-placeholder-art-prompts.md) | AI placeholder image prompt workflows for FXGL projects |
 
 ## Skill Implementation Priority
 

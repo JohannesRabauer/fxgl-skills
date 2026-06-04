@@ -2,7 +2,7 @@
   "repository": "fxgl-skills",
   "canonicalFormat": "Markdown with YAML front matter",
   "sourceOfTruth": "skills/*/SKILL.md",
-  "skillCount": 32,
+  "skillCount": 41,
   "skills": [
     {
       "name": "fxgl-ai-pathfinding",
@@ -84,6 +84,48 @@
       ]
     },
     {
+      "name": "fxgl-asset-sourcing-attribution",
+      "title": "FXGL Free Asset Sourcing & Attribution",
+      "path": "skills/fxgl-asset-sourcing-attribution/SKILL.md",
+      "description": "Source freely available third-party assets for an FXGL game, but only when the license clearly allows commercial use and modification. Download approved assets, organize them into the correct FXGL asset folders, and generate reusable provenance and attribution records for release compliance and optional in-game credits. Use this skill when you need spritesheets, portraits, UI icons, tiles, backgrounds, sound effects, or music from online sources without losing track of legal obligations.",
+      "triggers": [
+        "free asset download",
+        "attribution",
+        "asset license",
+        "commercial use",
+        "credits file",
+        "third party assets",
+        "OpenGameArt",
+        "Kenney",
+        "Freesound",
+        "asset provenance",
+        "source game art",
+        "source audio"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Internet access required for sourcing. Defaults to licenses that clearly allow commercial use and modification; rejects unclear or incompatible licenses.",
+      "category": "fxgl/assets",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "assets",
+        "attribution",
+        "licensing",
+        "audio"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-audio",
       "title": "FXGL Audio System",
       "path": "skills/fxgl-audio/SKILL.md",
@@ -123,10 +165,49 @@
       ]
     },
     {
+      "name": "fxgl-brawler",
+      "title": "FXGL Beat 'em Up Brawler",
+      "path": "skills/fxgl-brawler/SKILL.md",
+      "description": "Build a beat 'em up brawler in FXGL — implement a side-scrolling stage that advances when all enemies in a section are defeated, melee hit detection using a short-lived hitbox entity in front of the player, knockback physics impulse on hit, hitstop (brief freeze on contact), an enemy crowd AI that surrounds the player with defined roles (approaching/circling/waiting), a combo counter with timeout, grapple and throw mechanics, food/item pickups that restore health, a boss fight at end of stage, and optional co-op with two players. Use this skill when building a Streets of Rage style brawler, Final Fight clone, beat 'em up, or any game with side-scrolling melee combat against enemy crowds.",
+      "triggers": [
+        "brawler",
+        "beat em up",
+        "streets of rage",
+        "melee crowd",
+        "knockback",
+        "combo counter",
+        "hitstop",
+        "grapple",
+        "stage scrolling",
+        "enemy crowd",
+        "beat-em-up"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "brawler"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-bullet-hell",
       "title": "FXGL Bullet Hell",
       "path": "skills/fxgl-bullet-hell/SKILL.md",
-      "description": "Build a bullet hell (danmaku) game in FXGL — create a tiny precise hitbox independent of the player sprite, add a graze sensor for near-miss scoring, script spiral and circular aimed bullet patterns, implement phase-based boss attack scripting, add a screen-clearing bomb that removes all enemy bullets, handle invincibility frames on hit, accelerate and decelerate bullets mid-flight, create homing bullets with delayed lock-on, and efficiently manage 1000+ simultaneous bullets on screen. Use this skill when building a danmaku shooter, pattern-based boss, or any game requiring dense bullet patterns and precise hitbox design.",
+      "description": "Build a bullet hell (danmaku) game in FXGL — create a tiny precise hitbox independent of the player sprite, add a graze sensor for near-miss scoring, script spiral and circular aimed bullet patterns, implement phase-based boss attack scripting, add a screen- clearing bomb that removes all enemy bullets, handle invincibility frames on hit, accelerate and decelerate bullets mid-flight, create homing bullets with delayed lock- on, and efficiently manage 1000+ simultaneous bullets on screen. Use this skill when building a danmaku shooter, pattern-based boss, or any game requiring dense bullet patterns and precise hitbox design.",
       "triggers": [
         "bullet hell",
         "danmaku",
@@ -166,7 +247,7 @@
       "name": "fxgl-card-game",
       "title": "FXGL Card Game / Deckbuilder",
       "path": "skills/fxgl-card-game/SKILL.md",
-      "description": "Build a card game or deckbuilder in FXGL — manage a deck with shuffle and draw, display cards in a fanned hand layout with hover effects, implement drag-and-drop or click-to-play card interactions, enforce a mana/energy cost system per turn, define card effects (damage, heal, draw, buff, shield) with a unified interface, manage discard pile and deck reshuffling, implement turn phases (draw/main/end), animate cards flying to the play area, handle targeted card plays with enemy selection, and support a deckbuilding mode for adding/removing cards. Use this skill when building a card game (Slay the Spire, Hearthstone style), deckbuilder, or any game with collectible card mechanics.",
+      "description": "Build a card game or deckbuilder in FXGL — manage a deck with shuffle and draw, display cards in a fanned hand layout with hover effects, implement drag-and-drop or click-to- play card interactions, enforce a mana/energy cost system per turn, define card effects (damage, heal, draw, buff, shield) with a unified interface, manage discard pile and deck reshuffling, implement turn phases (draw/main/end), animate cards flying to the play area, handle targeted card plays with enemy selection, and support a deckbuilding mode for adding/removing cards. Use this skill when building a card game (Slay the Spire, Hearthstone style), deckbuilder, or any game with collectible card mechanics.",
       "triggers": [
         "card game",
         "deckbuilder",
@@ -288,6 +369,46 @@
       ]
     },
     {
+      "name": "fxgl-endless-runner",
+      "title": "FXGL Endless Runner",
+      "path": "skills/fxgl-endless-runner/SKILL.md",
+      "description": "Build an endless runner in FXGL — auto-scroll the camera at increasing speed, keep the player at a fixed screen X while allowing only vertical movement (jump/duck), procedurally generate obstacles off the right edge and despawn them past the left edge, implement a distance-based score, collect coins along the path, scale difficulty with scroll speed and obstacle density, add power-ups (shield, magnet, jetpack, double score), and persist the high score with SaveLoadService. Use this skill when building a Temple Run-style 2D game, Jetpack Joyride-style endless scroller, or any auto-scrolling infinite runner.",
+      "triggers": [
+        "endless runner",
+        "auto-scroll",
+        "infinite runner",
+        "auto-scrolling",
+        "procedural obstacles",
+        "distance score",
+        "jetpack joyride",
+        "temple run 2D",
+        "obstacle generation",
+        "high score",
+        "coin magnet"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "endless",
+        "runner"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-entity-component",
       "title": "FXGL Entity-Component System",
       "path": "skills/fxgl-entity-component/SKILL.md",
@@ -328,7 +449,7 @@
       "name": "fxgl-fighting",
       "title": "FXGL Fighting Game",
       "path": "skills/fxgl-fighting/SKILL.md",
-      "description": "Build a fighting game in FXGL — implement a character state machine (idle/walk/jump/attack/ hurt/block/knockdown), separate hitbox and hurtbox entities for accurate hit detection, an input buffer for combo and special move recognition, frame-window management (startup/ active/recovery frames), health bar HUD with chip-damage animation, knockback on hit, block mechanics with chip damage, round timer and round structure, and combo counter display. Use this skill when building a 1v1 or 2v2 fighting game, a boss fight with frame-data mechanics, or any game requiring precise hitbox/hurtbox distinction.",
+      "description": "Build a fighting game in FXGL — implement a character state machine (idle/walk/jump/attack/ hurt/block/knockdown), separate hitbox and hurtbox entities for accurate hit detection, an input buffer for combo and special move recognition, frame- window management (startup/ active/recovery frames), health bar HUD with chip-damage animation, knockback on hit, block mechanics with chip damage, round timer and round structure, and combo counter display. Use this skill when building a 1v1 or 2v2 fighting game, a boss fight with frame-data mechanics, or any game requiring precise hitbox/hurtbox distinction.",
       "triggers": [
         "fighting game",
         "hitbox hurtbox",
@@ -406,7 +527,7 @@
       "name": "fxgl-input",
       "title": "FXGL Input System",
       "path": "skills/fxgl-input/SKILL.md",
-      "description": "Handle all input in FXGL — bind keyboard keys (held, press, release), mouse buttons and position, virtual on-screen joystick and controller buttons, hardware gamepad via fxgl-controllerinput, capture and replay input recordings, register input combos/sequences, and use the fluent input builder. Use this skill when wiring player controls, implementing key rebinding, adding mobile touch controls, recording demos, or implementing fighting-game combo systems.",
+      "description": "Handle all input in FXGL — bind keyboard keys (held, press, release), mouse buttons and position, virtual on-screen joystick and controller buttons, hardware gamepad via fxgl- controllerinput, capture and replay input recordings, register input combos/sequences, and use the fluent input builder. Use this skill when wiring player controls, implementing key rebinding, adding mobile touch controls, recording demos, or implementing fighting-game combo systems.",
       "triggers": [
         "keyboard input",
         "mouse input",
@@ -518,10 +639,49 @@
       ]
     },
     {
+      "name": "fxgl-match3",
+      "title": "FXGL Match-3 Puzzle",
+      "path": "skills/fxgl-match3/SKILL.md",
+      "description": "Build a match-3 puzzle game in FXGL — create an NxM grid of gem entities from a 2D array, implement adjacent gem swapping with invalid-swap undo, detect horizontal and vertical matches of 3 or more same-type gems, clear matched gems with particle effects, apply gravity to fill gaps (gems fall down), spawn new gems from above to refill, cascade-loop to find new matches after each fall, award combo multipliers for cascades, create special gems from 4-match and 5-match patterns, and enforce level goals (clear N gems of type X within M moves). Use this skill when building a match-3 game, swap-puzzle, Candy Crush-style game, or any grid-based pattern matching puzzle.",
+      "triggers": [
+        "match-3",
+        "match3",
+        "swap gems",
+        "three in a row",
+        "candy crush",
+        "cascade",
+        "gem grid",
+        "puzzle grid",
+        "combo multiplier",
+        "special gem",
+        "match puzzle"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "match3"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-minigames",
       "title": "FXGL Mini-Game System",
       "path": "skills/fxgl-minigames/SKILL.md",
-      "description": "Use and extend the FXGL built-in mini-game system — launch lock-picking, sweet-spot, trigger-mash, trigger-sequence (QTE), circuit-breaker, and random-occurrence mini-games via MiniGameService, handle success/failure results, configure difficulty, and author custom mini-games. Use this skill when adding interactive skill-check moments, lock-picking mechanics, quick-time events, button-mashing sequences, or any mini-game overlay.",
+      "description": "Use and extend the FXGL built-in mini-game system — launch lock-picking, sweet-spot, trigger-mash, trigger-sequence (QTE), circuit-breaker, and random-occurrence mini-games via MiniGameService, handle success/failure results, configure difficulty, and author custom mini-games. Use this skill when adding interactive skill-check moments, lock- picking mechanics, quick-time events, button-mashing sequences, or any mini-game overlay.",
       "triggers": [
         "mini game",
         "minigame",
@@ -712,6 +872,84 @@
       ]
     },
     {
+      "name": "fxgl-pinball",
+      "title": "FXGL Pinball",
+      "path": "skills/fxgl-pinball/SKILL.md",
+      "description": "Build a pinball game in FXGL — configure a kinematic flipper that rotates on key press using Box2D physics, set up a high-restitution DYNAMIC ball that bounces elastically, add circular bumpers that apply linear impulse to the ball on contact, implement a plunger launch with charge-and-release force, set up a drain sensor at the bottom for ball loss, handle multi-ball mode, implement score multipliers from bumper combos, and add ramps that divert the ball to an upper playfield. Use this skill when building a pinball game, ball-and-flipper mechanic, or any physics simulation with flippers, bumpers, and high-restitution ball dynamics.",
+      "triggers": [
+        "pinball",
+        "flipper",
+        "bumper",
+        "plunger",
+        "drain",
+        "multi-ball",
+        "ball physics",
+        "high restitution",
+        "pinball table",
+        "score multiplier bumper"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "pinball"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-placeholder-art-prompts",
+      "title": "FXGL Placeholder Art Prompts",
+      "path": "skills/fxgl-placeholder-art-prompts/SKILL.md",
+      "description": "Generate AI-image prompts for temporary placeholder art in FXGL games. Optimize for gameplay readability, exact dimensions, consistent perspective, transparent backgrounds, and FXGL spritesheet compatibility rather than final production polish. Use this skill when a prototype needs usable stand-in art for sprites, portraits, UI icons, or environment tiles while real art is pending.",
+      "triggers": [
+        "placeholder art",
+        "ai image prompt",
+        "temp art",
+        "spritesheet prompt",
+        "icon prompt",
+        "tile prompt",
+        "portrait prompt",
+        "gameplay readability",
+        "top down art",
+        "side view sprite",
+        "isometric placeholder"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Intended for temporary images loaded through the standard FXGL asset pipeline. Focuses on image placeholders only; audio is out of scope.",
+      "category": "fxgl/art",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "art",
+        "placeholder",
+        "prompts"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
       "name": "fxgl-platformer",
       "title": "FXGL Platformer",
       "path": "skills/fxgl-platformer/SKILL.md",
@@ -874,7 +1112,7 @@
       "name": "fxgl-roguelike",
       "title": "FXGL Roguelike / Roguelite",
       "path": "skills/fxgl-roguelike/SKILL.md",
-      "description": "Build a roguelike or roguelite game in FXGL — structure runs with a full state reset on death, save only meta-progression permanently, generate a new procedural dungeon each run with DungeonGenerator, implement weighted RNG loot tables, show 3-choice item offer screens, track run statistics (kills, gold, floor depth), gate boss fights at milestone floors, implement item synergies where items modify each other's effects, add curse mechanics as item downsides, and integrate a prestige/unlock system for permanent cross-run improvements. Use this skill when building a roguelike, roguelite, dungeon crawler, run-based game, or any permadeath game with procedural content.",
+      "description": "Build a roguelike or roguelite game in FXGL — structure runs with a full state reset on death, save only meta-progression permanently, generate a new procedural dungeon each run with DungeonGenerator, implement weighted RNG loot tables, show 3-choice item offer screens, track run statistics (kills, gold, floor depth), gate boss fights at milestone floors, implement item synergies where items modify each other's effects, add curse mechanics as item downsides, and integrate a prestige/unlock system for permanent cross- run improvements. Use this skill when building a roguelike, roguelite, dungeon crawler, run-based game, or any permadeath game with procedural content.",
       "triggers": [
         "roguelike",
         "roguelite",
@@ -996,7 +1234,7 @@
       "name": "fxgl-scene3d",
       "title": "FXGL 3D Scene",
       "path": "skills/fxgl-scene3d/SKILL.md",
-      "description": "Build 3D scenes in FXGL — enable experimental 3D mode, set up Camera3D with free-look or follow-entity modes, load OBJ models via AssetLoader, spawn 3D entities with Model3D views, create built-in 3D primitives (Cuboid, Prism, Torus, Cylinder, Cone), add a six-face Skybox, animate 3D entities with AnimationBuilder, implement 3D collision with PhysicsComponent3D, build a third-person camera, and create Minecraft-style voxel worlds. Use this skill when building a 3D game, a 3D level, a first-person or third-person view, a 3D model viewer, or any JavaFX 3D scene within FXGL.",
+      "description": "Build 3D scenes in FXGL — enable experimental 3D mode, set up Camera3D with free-look or follow-entity modes, load OBJ models via AssetLoader, spawn 3D entities with Model3D views, create built-in 3D primitives (Cuboid, Prism, Torus, Cylinder, Cone), add a six- face Skybox, animate 3D entities with AnimationBuilder, implement 3D collision with PhysicsComponent3D, build a third-person camera, and create Minecraft-style voxel worlds. Use this skill when building a 3D game, a 3D level, a first-person or third- person view, a 3D model viewer, or any JavaFX 3D scene within FXGL.",
       "triggers": [
         "3D",
         "Camera3D",
@@ -1105,6 +1343,84 @@
         "javafx",
         "game-types",
         "stealth"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-strategy-rts",
+      "title": "FXGL Real-Time Strategy",
+      "path": "skills/fxgl-strategy-rts/SKILL.md",
+      "description": "Build a real-time strategy game in FXGL — implement rectangle-drag unit selection with a rubber-band box overlay, right-click move commands routed to AStarMoveComponent per unit, group formation offsets to prevent unit overlap, a resource harvesting state machine (idle → gather → deposit), building placement with a ghost preview that turns red/green based on cell availability, a fog-of-war dark overlay clipped by unit vision circles, and a minimap that mirrors world entity positions. Use this skill when building a Command & Conquer style RTS, base-builder, resource manager, or any game with multi-unit selection and command-and-control mechanics.",
+      "triggers": [
+        "rts",
+        "real-time strategy",
+        "unit selection",
+        "right-click move",
+        "fog of war",
+        "resource gather",
+        "building placement",
+        "minimap",
+        "formation",
+        "base builder"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "strategy",
+        "rts"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-tactical-rpg",
+      "title": "FXGL Tactical RPG",
+      "path": "skills/fxgl-tactical-rpg/SKILL.md",
+      "description": "Build a tactical RPG (TRPG) in FXGL — set up a tile grid where each unit occupies one cell, implement BFS movement range highlighting that respects terrain move cost, a turn order queue sorted by speed, an action point system limiting moves and actions per turn, ranged line-of-sight checking for archers, a combat formula (hitChance = ACC - EVA, damage = ATK - DEF), an ability system with AoE splash in a radius, and status effects (poison, sleep, haste) applied per turn. Use this skill when building a Final Fantasy Tactics style TRPG, grid combat game, turn-based strategy RPG, or any game with tile-based unit movement and turn-order combat.",
+      "triggers": [
+        "tactical rpg",
+        "trpg",
+        "grid combat",
+        "turn order",
+        "action points",
+        "movement range",
+        "bfs range",
+        "line of sight ranged",
+        "status effect turn",
+        "hex grid combat"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "tactical",
+        "rpg"
       ],
       "metadata": {
         "author": "fxgl-skills",
@@ -1269,6 +1585,44 @@
         "state",
         "variables",
         "events"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-visual-novel",
+      "title": "FXGL Visual Novel",
+      "path": "skills/fxgl-visual-novel/SKILL.md",
+      "description": "Build a visual novel in FXGL — swap full-screen background images per scene, position character sprites at Left/Center/Right with cross-fade transitions, reveal dialogue text character-by-character with a typewriter timer, present clickable choice buttons that branch the story, store narrative flags to track relationship scores and visited scenes, auto-save chapter progress with SaveLoadService, and support a backlog overlay that scrolls through past dialogue lines. Use this skill when building a visual novel, kinetic novel, dating sim dialogue system, or any choice-based narrative game with illustrated scenes.",
+      "triggers": [
+        "visual novel",
+        "dialogue box",
+        "typewriter effect",
+        "choice button",
+        "narrative flags",
+        "character sprite",
+        "scene background swap",
+        "backlog",
+        "vn engine"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x",
+      "category": "fxgl/game-types",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "game-types",
+        "visual",
+        "novel"
       ],
       "metadata": {
         "author": "fxgl-skills",

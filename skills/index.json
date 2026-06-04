@@ -2,7 +2,7 @@
   "repository": "fxgl-skills",
   "canonicalFormat": "Markdown with YAML front matter",
   "sourceOfTruth": "skills/*/SKILL.md",
-  "skillCount": 49,
+  "skillCount": 50,
   "skillGroups": {
     "game-types-2d": [
       "fxgl-brawler",
@@ -33,6 +33,9 @@
       "fxgl-fps-3d",
       "fxgl-third-person-3d",
       "fxgl-voxel"
+    ],
+    "workflow": [
+      "fxgl-project-starter"
     ]
   },
   "useCaseCoverage": {
@@ -92,6 +95,9 @@
     ],
     "docs/uc-progression.md": [
       "fxgl-progression"
+    ],
+    "docs/uc-project-starter.md": [
+      "fxgl-project-starter"
     ],
     "docs/uc-save-load.md": [
       "fxgl-save-load"
@@ -1384,6 +1390,46 @@
         "java",
         "javafx",
         "progression"
+      ],
+      "metadata": {
+        "author": "fxgl-skills",
+        "version": "1.0",
+        "fxgl-version": "21.1"
+      },
+      "allowedTools": [
+        "Read",
+        "Write",
+        "Edit",
+        "Bash"
+      ]
+    },
+    {
+      "name": "fxgl-project-starter",
+      "title": "FXGL Project Starter",
+      "path": "skills/fxgl-project-starter/SKILL.md",
+      "description": "Start a new FXGL project through a bounded Socratic discovery flow, then turn the answers into a docs-first starter specification with ADRs, an arc42-lite architecture summary, and Mermaid use-case diagrams before scaffolding the project itself. Continue using the same questioning approach for initialization choices, and require documentation updates plus automated tests for every implemented step.",
+      "triggers": [
+        "start fxgl project",
+        "bootstrap new game",
+        "fxgl starter",
+        "project inception",
+        "socratic questions",
+        "arc42",
+        "adr",
+        "docs first",
+        "architecture brief",
+        "scaffold fxgl"
+      ],
+      "compatibility": "Java 17+, FXGL 21.x. Works best when combined with fxgl-game-lifecycle and the relevant game-type skills chosen during project discovery.",
+      "category": "fxgl/workflow",
+      "tags": [
+        "fxgl",
+        "java",
+        "javafx",
+        "workflow",
+        "starter",
+        "documentation",
+        "testing"
       ],
       "metadata": {
         "author": "fxgl-skills",

@@ -34,6 +34,7 @@ skills that can be implemented to assist developers building games with FXGL.
 | [uc-dev-tools.md](uc-dev-tools.md) | Developer console, entity inspector and profiler |
 | [uc-asset-sourcing-attribution.md](uc-asset-sourcing-attribution.md) | Free asset sourcing, attribution and FXGL project intake |
 | [uc-placeholder-art-prompts.md](uc-placeholder-art-prompts.md) | AI placeholder image prompt workflows for FXGL projects |
+| [uc-project-starter.md](uc-project-starter.md) | Docs-first project discovery, scaffolding and testing workflow |
 
 ## Skill Implementation Priority
 

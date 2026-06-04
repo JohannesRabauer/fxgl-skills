@@ -71,6 +71,13 @@ Game-type skills are grouped in two ways:
 For generic 3D primitives, models, and camera setup, use `fxgl-scene3d` alongside the 3D
 game-type skill.
 
+## Workflow skills
+
+`fxgl-project-starter`
+
+Use workflow skills to orchestrate discovery, documentation, scaffolding, and coordination across
+multiple FXGL subsystem skills.
+
 ### Coverage notes
 
 - `docs/uc-overview.md` is a catalog / index document, not a single skill target.

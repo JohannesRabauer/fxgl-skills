@@ -3,22 +3,44 @@ name: fxgl-ai-pathfinding
 description: >
   Implement AI movement and pathfinding in FXGL — set up an AStarGrid, find paths using
   AStarPathfinder, attach AStarMoveComponent or RandomAStarMoveComponent to entities,
-  implement GOAP (Goal-Oriented Action Planning) with world state and action preconditions,
-  add SenseAI for vision and hearing, set up waypoint patrol routes, generate dungeons and
-  mazes procedurally. Use this skill when making enemies chase the player, implementing
-  patrol behaviours, building GOAP NPC AI, adding pathfinding to a tile-based game, or
-  generating procedural levels.
-  Triggers on: "A*", "pathfinding", "AStarGrid", "AStarMoveComponent", "GOAP", "enemy AI",
-  "patrol", "chase", "SenseAI", "dungeon generation", "maze", "waypoint", "enemy movement".
-compatibility: Java 17+, FXGL 21.x
+  implement GOAP (Goal-Oriented Action Planning) with world state and action
+  preconditions, add SenseAI for vision and hearing, set up waypoint patrol routes,
+  generate dungeons and mazes procedurally. Use this skill when making enemies chase the
+  player, implementing patrol behaviours, building GOAP NPC AI, adding pathfinding to a
+  tile-based game, or generating procedural levels.
+triggers:
+  - A*
+  - pathfinding
+  - AStarGrid
+  - AStarMoveComponent
+  - GOAP
+  - enemy AI
+  - patrol
+  - chase
+  - SenseAI
+  - dungeon generation
+  - maze
+  - waypoint
+  - enemy movement
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/ai
+tags:
+  - fxgl
+  - java
+  - javafx
+  - ai
+  - pathfinding
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/ai
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL AI — Pathfinding, GOAP & Sense AI
 
 ## A* Pathfinding Setup

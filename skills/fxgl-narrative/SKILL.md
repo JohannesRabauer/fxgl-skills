@@ -2,21 +2,41 @@
 name: fxgl-narrative
 description: >
   Implement cutscenes, dialogue, and video scenes in FXGL — create text cutscenes with
-  CutsceneService, load and play branching dialogue graphs from JSON, run the DialogueScriptRunner
-  with function nodes, play video cutscene files, trigger narrative scenes from collision or
-  game events, and build custom dialogue UI. Use this skill when adding story sequences,
-  NPC conversations, intro/outro scenes, branching player choices, or scripted in-game events.
-  Triggers on: "cutscene", "dialogue", "DialogueGraph", "CutsceneService", "branching dialogue",
-  "NPC conversation", "VideoScene", "narrative", "story", "dialogue tree", "script runner".
-compatibility: Java 17+, FXGL 21.x. CutsceneService must be registered. Video requires JavaFX Media.
+  CutsceneService, load and play branching dialogue graphs from JSON, run the
+  DialogueScriptRunner with function nodes, play video cutscene files, trigger narrative
+  scenes from collision or game events, and build custom dialogue UI. Use this skill when
+  adding story sequences, NPC conversations, intro/outro scenes, branching player choices,
+  or scripted in-game events.
+triggers:
+  - cutscene
+  - dialogue
+  - DialogueGraph
+  - CutsceneService
+  - branching dialogue
+  - NPC conversation
+  - VideoScene
+  - narrative
+  - story
+  - dialogue tree
+  - script runner
+compatibility: >
+  Java 17+, FXGL 21.x. CutsceneService must be registered. Video requires JavaFX Media.
+category: fxgl/narrative
+tags:
+  - fxgl
+  - java
+  - javafx
+  - narrative
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/narrative
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Narrative System
 
 ## Setup

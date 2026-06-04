@@ -4,19 +4,38 @@ description: >
   Use and extend the FXGL built-in mini-game system — launch lock-picking, sweet-spot,
   trigger-mash, trigger-sequence (QTE), circuit-breaker, and random-occurrence mini-games
   via MiniGameService, handle success/failure results, configure difficulty, and author
-  custom mini-games. Use this skill when adding interactive skill-check moments, lock-picking
-  mechanics, quick-time events, button-mashing sequences, or any mini-game overlay.
-  Triggers on: "mini game", "minigame", "MiniGameService", "lock pick", "sweet spot",
-  "QTE", "quick time event", "trigger mash", "circuit breaker", "random occurrence".
-compatibility: Java 17+, FXGL 21.x. MiniGameService must be registered.
+  custom mini-games. Use this skill when adding interactive skill-check moments, lock-
+  picking mechanics, quick-time events, button-mashing sequences, or any mini-game
+  overlay.
+triggers:
+  - mini game
+  - minigame
+  - MiniGameService
+  - lock pick
+  - sweet spot
+  - QTE
+  - quick time event
+  - trigger mash
+  - circuit breaker
+  - random occurrence
+compatibility: >
+  Java 17+, FXGL 21.x. MiniGameService must be registered.
+category: fxgl/minigames
+tags:
+  - fxgl
+  - java
+  - javafx
+  - minigames
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/minigames
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Mini-Game System
 
 ## Setup

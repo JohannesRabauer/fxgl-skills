@@ -2,22 +2,43 @@
 name: fxgl-economy
 description: >
   Implement inventory and trade/shop systems in FXGL — create typed Inventory objects,
-  add/remove/query items, display inventory via InventoryListView, build a Shop with TradeItem
-  buy/sell prices, open a ShopView or TradeView UI, implement buy and sell transactions,
-  manage item stacks and capacity, and wire the shop to NPC collisions. Use this skill when
-  adding an inventory system, item collection, a merchant shop, an upgrade store, or any
-  economy mechanic.
-  Triggers on: "inventory", "shop", "item", "TradeItem", "buy", "sell", "InventoryListView",
-  "ShopView", "trade", "merchant", "store", "collectible item", "economy".
-compatibility: Java 17+, FXGL 21.x
+  add/remove/query items, display inventory via InventoryListView, build a Shop with
+  TradeItem buy/sell prices, open a ShopView or TradeView UI, implement buy and sell
+  transactions, manage item stacks and capacity, and wire the shop to NPC collisions. Use
+  this skill when adding an inventory system, item collection, a merchant shop, an upgrade
+  store, or any economy mechanic.
+triggers:
+  - inventory
+  - shop
+  - item
+  - TradeItem
+  - buy
+  - sell
+  - InventoryListView
+  - ShopView
+  - trade
+  - merchant
+  - store
+  - collectible item
+  - economy
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/economy
+tags:
+  - fxgl
+  - java
+  - javafx
+  - economy
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/economy
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Inventory & Trade System
 
 ## Define Your Item Type

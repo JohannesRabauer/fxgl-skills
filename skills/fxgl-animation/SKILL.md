@@ -5,19 +5,38 @@ description: >
   using AnimationBuilder DSL, play sprite sheet frame animations with AnimatedTexture and
   AnimationChannel, animate along bezier/path curves, animate JavaFX properties (color,
   opacity), chain sequential animations, apply easing interpolators, and spawn or despawn
-  entities with built-in scale effects. Use this skill when adding movement tweens, character
-  walk cycles, UI transitions, cutscene animations, or particle-like effects.
-  Triggers on: "AnimationBuilder", "animate", "tween", "sprite sheet", "AnimatedTexture",
-  "AnimationChannel", "fade in", "fade out", "interpolator", "walk cycle", "animation".
-compatibility: Java 17+, FXGL 21.x
+  entities with built-in scale effects. Use this skill when adding movement tweens,
+  character walk cycles, UI transitions, cutscene animations, or particle-like effects.
+triggers:
+  - AnimationBuilder
+  - animate
+  - tween
+  - sprite sheet
+  - AnimatedTexture
+  - AnimationChannel
+  - fade in
+  - fade out
+  - interpolator
+  - walk cycle
+  - animation
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/animation
+tags:
+  - fxgl
+  - java
+  - javafx
+  - animation
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/animation
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Animation System
 
 ## AnimationBuilder — Core DSL

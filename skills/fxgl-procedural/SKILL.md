@@ -1,25 +1,48 @@
 ---
 name: fxgl-procedural
 description: >
-  Generate procedural content in FXGL — create random dungeon layouts with DungeonGenerator
-  and DungeonConfig (room size, count, grid dimensions), generate perfect mazes with
-  MazeGenerator, convert generated Grid2D cells to spawned game entities via EntityFactory,
-  seed generation for reproducible levels, mark special rooms (start, boss, treasure), solve
-  generated mazes with A*, and integrate procedural levels with SaveLoadService for level codes.
-  Use this skill when building a roguelike, endless runner, procedurally generated dungeon crawler,
-  or any game where levels are generated at runtime rather than hand-crafted.
-  Triggers on: "procedural", "dungeon generation", "DungeonGenerator", "DungeonConfig", "MazeGenerator",
-  "random level", "Grid2D", "DungeonCell", "MazeCell", "roguelike", "procedural generation",
-  "random dungeon", "level generation", "seeded", "level code".
-compatibility: Java 17+, FXGL 21.x
+  Generate procedural content in FXGL — create random dungeon layouts with
+  DungeonGenerator and DungeonConfig (room size, count, grid dimensions), generate perfect
+  mazes with MazeGenerator, convert generated Grid2D cells to spawned game entities via
+  EntityFactory, seed generation for reproducible levels, mark special rooms (start, boss,
+  treasure), solve generated mazes with A*, and integrate procedural levels with
+  SaveLoadService for level codes. Use this skill when building a roguelike, endless
+  runner, procedurally generated dungeon crawler, or any game where levels are generated
+  at runtime rather than hand-crafted.
+triggers:
+  - procedural
+  - dungeon generation
+  - DungeonGenerator
+  - DungeonConfig
+  - MazeGenerator
+  - random level
+  - Grid2D
+  - DungeonCell
+  - MazeCell
+  - roguelike
+  - procedural generation
+  - random dungeon
+  - level generation
+  - seeded
+  - level code
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/procedural
+tags:
+  - fxgl
+  - java
+  - javafx
+  - procedural
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/procedural
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Procedural Generation
 
 ## Dungeon Generation

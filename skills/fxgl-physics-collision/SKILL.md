@@ -2,22 +2,41 @@
 name: fxgl-physics-collision
 description: >
   Configure Box2D physics in FXGL — add PhysicsComponent to entities, set body types
-  (DYNAMIC, STATIC, KINEMATIC), define fixture properties (density, friction, restitution),
-  handle collision callbacks (onCollisionBegin, onCollision, onCollisionEnd), detect
-  collectibles, filter collisions, perform raycasting, and set up gravity. Use this skill
-  when adding physics to a game, implementing platformer jump/gravity, handling bullet hits,
-  detecting player picking up items, or setting up wall/floor colliders.
-  Triggers on: "Box2D", "PhysicsComponent", "collision", "gravity", "physics body",
-  "BodyType", "raycast", "platformer physics", "onCollisionBegin".
-compatibility: Java 17+, FXGL 21.x — Box2D is bundled, no extra dependency needed.
+  (DYNAMIC, STATIC, KINEMATIC), define fixture properties (density, friction,
+  restitution), handle collision callbacks (onCollisionBegin, onCollision,
+  onCollisionEnd), detect collectibles, filter collisions, perform raycasting, and set up
+  gravity. Use this skill when adding physics to a game, implementing platformer
+  jump/gravity, handling bullet hits, detecting player picking up items, or setting up
+  wall/floor colliders.
+triggers:
+  - Box2D
+  - PhysicsComponent
+  - collision
+  - gravity
+  - physics body
+  - BodyType
+  - raycast
+  - platformer physics
+  - onCollisionBegin
+compatibility: >
+  Java 17+, FXGL 21.x — Box2D is bundled, no extra dependency needed.
+category: fxgl/physics
+tags:
+  - fxgl
+  - java
+  - javafx
+  - physics
+  - collision
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/physics
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Physics & Collision
 
 ## Enabling Physics on an Entity

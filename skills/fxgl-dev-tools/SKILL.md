@@ -1,26 +1,50 @@
 ---
 name: fxgl-dev-tools
 description: >
-  Use FXGL's built-in developer tools during development — enable the developer menu (F1 overlay),
-  inspect all active entities and their components at runtime, use the in-game console to run
-  commands without recompiling, profile FPS and memory with the profiler window, visualise
-  entity bounding boxes and collision shapes, switch application mode between DEVELOPER and
-  RELEASE, register custom dev console commands via DevService, use FXGL.debug() for console
-  logging, and visualise graphs (pathfinding, dialogue, quest) at runtime.
-  Use this skill when debugging game behaviour, tuning AI, stress-testing level generation,
-  inspecting entity state at runtime, or setting up a cheat/test console for development.
-  Triggers on: "developer menu", "DevService", "devMenu", "devPane", "console command",
-  "profiler", "FPS counter", "bounding box visualisation", "ApplicationMode", "DEVELOPER mode",
-  "RELEASE mode", "entity inspector", "debug camera", "FXGL.debug", "graph visualisation".
-compatibility: Java 17+, FXGL 21.x
+  Use FXGL's built-in developer tools during development — enable the developer menu (F1
+  overlay), inspect all active entities and their components at runtime, use the in-game
+  console to run commands without recompiling, profile FPS and memory with the profiler
+  window, visualise entity bounding boxes and collision shapes, switch application mode
+  between DEVELOPER and RELEASE, register custom dev console commands via DevService, use
+  FXGL.debug() for console logging, and visualise graphs (pathfinding, dialogue, quest) at
+  runtime. Use this skill when debugging game behaviour, tuning AI, stress-testing level
+  generation, inspecting entity state at runtime, or setting up a cheat/test console for
+  development.
+triggers:
+  - developer menu
+  - DevService
+  - devMenu
+  - devPane
+  - console command
+  - profiler
+  - FPS counter
+  - bounding box visualisation
+  - ApplicationMode
+  - DEVELOPER mode
+  - RELEASE mode
+  - entity inspector
+  - debug camera
+  - FXGL.debug
+  - graph visualisation
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/dev
+tags:
+  - fxgl
+  - java
+  - javafx
+  - dev
+  - tools
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/dev
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Developer Tools
 
 ## Enable Dev Tools in initSettings

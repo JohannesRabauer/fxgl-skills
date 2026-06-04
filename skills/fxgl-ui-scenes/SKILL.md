@@ -2,24 +2,47 @@
 name: fxgl-ui-scenes
 description: >
   Build HUD, menus, dialogs, overlays, and scenes in FXGL — add UI nodes to the HUD,
-  create custom main and game menus via SceneFactory, open modal dialogs (message, confirm,
-  input, error, progress), push in-game notifications, implement GameSubScene overlays,
-  bind text to game variables, control viewport and camera-follow, integrate FXML layouts,
-  apply custom CSS, use nine-slice scaling images, add scrolling backgrounds, and add a
-  minimap. Use this skill for anything related to game UI, HUD, screen transitions, or
-  in-game menus.
-  Triggers on: "HUD", "menu", "dialog", "notification", "GameSubScene", "addUINode",
-  "viewport", "camera follow", "FXML", "CSS", "minimap", "scrolling background",
-  "custom menu", "scene", "UIFactory".
-compatibility: Java 17+, FXGL 21.x, JavaFX FXML for FXML features.
+  create custom main and game menus via SceneFactory, open modal dialogs (message,
+  confirm, input, error, progress), push in-game notifications, implement GameSubScene
+  overlays, bind text to game variables, control viewport and camera-follow, integrate
+  FXML layouts, apply custom CSS, use nine-slice scaling images, add scrolling
+  backgrounds, and add a minimap. Use this skill for anything related to game UI, HUD,
+  screen transitions, or in-game menus.
+triggers:
+  - HUD
+  - menu
+  - dialog
+  - notification
+  - GameSubScene
+  - addUINode
+  - viewport
+  - camera follow
+  - FXML
+  - CSS
+  - minimap
+  - scrolling background
+  - custom menu
+  - scene
+  - UIFactory
+compatibility: >
+  Java 17+, FXGL 21.x, JavaFX FXML for FXML features.
+category: fxgl/ui
+tags:
+  - fxgl
+  - java
+  - javafx
+  - ui
+  - scenes
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/ui
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL UI & Scene System
 
 ## Adding Nodes to the HUD

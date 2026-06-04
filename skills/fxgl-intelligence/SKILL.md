@@ -6,20 +6,39 @@ description: >
   speech recognition for voice commands, and platform text-to-speech. Use this skill when
   building accessibility features, gesture-controlled games, voice-commanded gameplay,
   facial-expression-driven mechanics, or spoken NPC dialogue.
-  Triggers on: "face detection", "gesture recognition", "speech recognition", "voice command",
-  "hand tracking", "text to speech", "TTS", "webcam", "ML", "fxgl-intelligence",
-  "facial expression", "hand gesture".
+triggers:
+  - face detection
+  - gesture recognition
+  - speech recognition
+  - voice command
+  - hand tracking
+  - text to speech
+  - TTS
+  - webcam
+  - ML
+  - fxgl-intelligence
+  - facial expression
+  - hand gesture
 compatibility: >
-  Java 17+, FXGL 21.x, fxgl-intelligence module. Requires Python ML backend running locally
-  (see references/ml-backend-setup.md). TTS requires platform speech engine (SAPI/NSS/espeak).
+  Java 17+, FXGL 21.x, fxgl-intelligence module. Requires Python ML backend running
+  locally (see references/ml-backend-setup.md). TTS requires platform speech engine
+  (SAPI/NSS/espeak).
+category: fxgl/intelligence
+tags:
+  - fxgl
+  - java
+  - javafx
+  - intelligence
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/intelligence
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Intelligence Module
 
 ## Dependency Setup

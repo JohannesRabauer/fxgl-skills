@@ -8,18 +8,41 @@ description: >
   and create offline timers that persist between sessions. Use this skill when tracking
   score, lives, time, game flags, wiring HUD to game state, implementing event-driven
   logic, or scheduling delayed/recurring actions.
-  Triggers on: "game variable", "initGameVars", "EventBus", "property binding",
-  "reactive", "inc", "geti", "getip", "onIntChangeTo", "game timer", "runOnce",
-  "runAtInterval", "world properties", "fire event".
-compatibility: Java 17+, FXGL 21.x
+triggers:
+  - game variable
+  - initGameVars
+  - EventBus
+  - property binding
+  - reactive
+  - inc
+  - geti
+  - getip
+  - onIntChangeTo
+  - game timer
+  - runOnce
+  - runAtInterval
+  - world properties
+  - fire event
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/state
+tags:
+  - fxgl
+  - java
+  - javafx
+  - state
+  - variables
+  - events
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/state
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Variables & Events
 
 ## Declaring Variables

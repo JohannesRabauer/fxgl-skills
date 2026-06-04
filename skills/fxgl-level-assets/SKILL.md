@@ -7,17 +7,37 @@ description: >
   object-layer objects to entity types via @Spawns. Process textures (crop, flip, tint,
   outline). Use this skill when setting up a level pipeline, loading a Tiled map, fetching
   game assets programmatically, or configuring the asset directory structure.
-  Triggers on: "Tiled", "TMX", "setLevelFromMap", "loadTexture", "AssetLoader",
-  "level loading", "tile map", "@Spawns", "asset directory", "sprite sheet animation".
-compatibility: Java 17+, FXGL 21.x. Tiled map editor must export maps as .tmx (XML).
+triggers:
+  - Tiled
+  - TMX
+  - setLevelFromMap
+  - loadTexture
+  - AssetLoader
+  - level loading
+  - tile map
+  - @Spawns
+  - asset directory
+  - sprite sheet animation
+compatibility: >
+  Java 17+, FXGL 21.x. Tiled map editor must export maps as .tmx (XML).
+category: fxgl/levels
+tags:
+  - fxgl
+  - java
+  - javafx
+  - levels
+  - level
+  - assets
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/levels
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Level Loading & Asset Management
 
 ## Asset Directory Layout

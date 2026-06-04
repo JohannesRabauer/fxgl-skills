@@ -2,24 +2,48 @@
 name: fxgl-scene3d
 description: >
   Build 3D scenes in FXGL — enable experimental 3D mode, set up Camera3D with free-look or
-  follow-entity modes, load OBJ models via AssetLoader, spawn 3D entities with Model3D views,
-  create built-in 3D primitives (Cuboid, Prism, Torus, Cylinder, Cone), add a six-face Skybox,
-  animate 3D entities with AnimationBuilder, implement 3D collision with PhysicsComponent3D,
-  build a third-person camera, and create Minecraft-style voxel worlds.
-  Use this skill when building a 3D game, a 3D level, a first-person or third-person view,
-  a 3D model viewer, or any JavaFX 3D scene within FXGL.
-  Triggers on: "3D", "Camera3D", "OBJ model", "Model3D", "Skybox", "Cuboid", "Prism", "Torus",
-  "3D primitives", "3D collision", "third person", "voxel", "3D scene", "setExperimental3D",
-  "PhysicsComponent3D", "3D animation".
-compatibility: Java 17+, FXGL 21.x. Requires JavaFX with 3D hardware support.
+  follow-entity modes, load OBJ models via AssetLoader, spawn 3D entities with Model3D
+  views, create built-in 3D primitives (Cuboid, Prism, Torus, Cylinder, Cone), add a six-
+  face Skybox, animate 3D entities with AnimationBuilder, implement 3D collision with
+  PhysicsComponent3D, build a third-person camera, and create Minecraft-style voxel
+  worlds. Use this skill when building a 3D game, a 3D level, a first-person or third-
+  person view, a 3D model viewer, or any JavaFX 3D scene within FXGL.
+triggers:
+  - 3D
+  - Camera3D
+  - OBJ model
+  - Model3D
+  - Skybox
+  - Cuboid
+  - Prism
+  - Torus
+  - 3D primitives
+  - 3D collision
+  - third person
+  - voxel
+  - 3D scene
+  - setExperimental3D
+  - PhysicsComponent3D
+  - 3D animation
+compatibility: >
+  Java 17+, FXGL 21.x. Requires JavaFX with 3D hardware support.
+category: fxgl/3d
+tags:
+  - fxgl
+  - java
+  - javafx
+  - 3d
+  - scene3d
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/3d
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL 3D Scene
 
 ## Enable 3D Mode

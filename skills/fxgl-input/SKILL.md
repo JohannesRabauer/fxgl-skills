@@ -2,22 +2,40 @@
 name: fxgl-input
 description: >
   Handle all input in FXGL — bind keyboard keys (held, press, release), mouse buttons and
-  position, virtual on-screen joystick and controller buttons, hardware gamepad via
-  fxgl-controllerinput, capture and replay input recordings, register input combos/sequences,
-  and use the fluent input builder. Use this skill when wiring player controls, implementing
-  key rebinding, adding mobile touch controls, recording demos, or implementing fighting-game
-  combo systems.
-  Triggers on: "keyboard input", "mouse input", "onKey", "onKeyDown", "UserAction",
-  "virtual joystick", "controller", "input binding", "key combo", "input capture".
-compatibility: Java 17+, FXGL 21.x. Gamepad support requires fxgl-controllerinput module.
+  position, virtual on-screen joystick and controller buttons, hardware gamepad via fxgl-
+  controllerinput, capture and replay input recordings, register input combos/sequences,
+  and use the fluent input builder. Use this skill when wiring player controls,
+  implementing key rebinding, adding mobile touch controls, recording demos, or
+  implementing fighting-game combo systems.
+triggers:
+  - keyboard input
+  - mouse input
+  - onKey
+  - onKeyDown
+  - UserAction
+  - virtual joystick
+  - controller
+  - input binding
+  - key combo
+  - input capture
+compatibility: >
+  Java 17+, FXGL 21.x. Gamepad support requires fxgl-controllerinput module.
+category: fxgl/input
+tags:
+  - fxgl
+  - java
+  - javafx
+  - input
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/input
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Input System
 
 ## Overview

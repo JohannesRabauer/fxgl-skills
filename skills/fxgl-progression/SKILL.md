@@ -3,20 +3,38 @@ name: fxgl-progression
 description: >
   Implement achievements and quests in FXGL — define variable-tracked achievements in
   initSettings, listen for AchievementEvent, create quests with int/boolean objectives via
-  QuestService, start/fail/complete quests, observe quest state changes, and chain objectives.
-  Use this skill when adding an achievement system, implementing quest tracking, wiring
-  game variables to unlockable goals, or building a quest log UI.
-  Triggers on: "achievement", "quest", "AchievementService", "QuestService", "objective",
-  "unlock", "quest log", "player progression", "milestone", "AchievementEvent".
-compatibility: Java 17+, FXGL 21.x. QuestService must be registered via addEngineService.
+  QuestService, start/fail/complete quests, observe quest state changes, and chain
+  objectives. Use this skill when adding an achievement system, implementing quest
+  tracking, wiring game variables to unlockable goals, or building a quest log UI.
+triggers:
+  - achievement
+  - quest
+  - AchievementService
+  - QuestService
+  - objective
+  - unlock
+  - quest log
+  - player progression
+  - milestone
+  - AchievementEvent
+compatibility: >
+  Java 17+, FXGL 21.x. QuestService must be registered via addEngineService.
+category: fxgl/progression
+tags:
+  - fxgl
+  - java
+  - javafx
+  - progression
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/progression
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Achievements & Quest System
 
 ## Achievements

@@ -2,24 +2,50 @@
 name: fxgl-particles-effects
 description: >
   Add particle systems and visual effects to an FXGL game — configure ParticleEmitter with
-  emission rate, size, speed, lifetime, color, and blend mode; use built-in factory emitters
-  (fire, explosion, smoke, rain); attach TrailParticleComponent for motion trails; apply
-  SlowTimeEffect for bullet-time; apply WobbleEffect for screen-shake; stack multiple effects
-  with EffectComponent; create image-to-particle animations; build fireworks displays.
-  Use this skill when adding explosions, fire, smoke, rain, motion trails, impact bursts,
-  bullet-time slow-motion, screen shake, or any particle-based visual polish.
-  Triggers on: "particle", "emitter", "ParticleEmitter", "explosion", "fire effect", "smoke",
-  "rain", "trail", "TrailParticleComponent", "EffectComponent", "SlowTimeEffect", "WobbleEffect",
-  "screen shake", "bullet time", "visual effect", "fireworks", "particle system".
-compatibility: Java 17+, FXGL 21.x
+  emission rate, size, speed, lifetime, color, and blend mode; use built-in factory
+  emitters (fire, explosion, smoke, rain); attach TrailParticleComponent for motion
+  trails; apply SlowTimeEffect for bullet-time; apply WobbleEffect for screen-shake; stack
+  multiple effects with EffectComponent; create image-to-particle animations; build
+  fireworks displays. Use this skill when adding explosions, fire, smoke, rain, motion
+  trails, impact bursts, bullet-time slow-motion, screen shake, or any particle-based
+  visual polish.
+triggers:
+  - particle
+  - emitter
+  - ParticleEmitter
+  - explosion
+  - fire effect
+  - smoke
+  - rain
+  - trail
+  - TrailParticleComponent
+  - EffectComponent
+  - SlowTimeEffect
+  - WobbleEffect
+  - screen shake
+  - bullet time
+  - visual effect
+  - fireworks
+  - particle system
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/effects
+tags:
+  - fxgl
+  - java
+  - javafx
+  - effects
+  - particles
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/effects
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Particle System & Visual Effects
 
 ## Built-in Emitter Factories

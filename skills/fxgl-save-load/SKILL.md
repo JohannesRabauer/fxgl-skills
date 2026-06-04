@@ -1,22 +1,43 @@
 ---
 name: fxgl-save-load
 description: >
-  Implement save and load functionality in FXGL — use SaveLoadService to persist and restore
-  game state, write/read DataFile via writeSaveState and readSaveState hooks, manage named
-  save slots, implement auto-save on checkpoints, integrate save/load into the game menu,
-  and handle save file existence checks. Use this skill when adding a save system, implementing
-  slot-based saves, restoring game progress between sessions, or handling checkpoint saves.
-  Triggers on: "save game", "load game", "SaveLoadService", "DataFile", "writeSaveState",
-  "readSaveState", "save slot", "checkpoint", "persist", "game progress".
-compatibility: Java 17+, FXGL 21.x. Save files stored in user home ~/.fxgl/{AppTitle}/saves/.
+  Implement save and load functionality in FXGL — use SaveLoadService to persist and
+  restore game state, write/read DataFile via writeSaveState and readSaveState hooks,
+  manage named save slots, implement auto-save on checkpoints, integrate save/load into
+  the game menu, and handle save file existence checks. Use this skill when adding a save
+  system, implementing slot-based saves, restoring game progress between sessions, or
+  handling checkpoint saves.
+triggers:
+  - save game
+  - load game
+  - SaveLoadService
+  - DataFile
+  - writeSaveState
+  - readSaveState
+  - save slot
+  - checkpoint
+  - persist
+  - game progress
+compatibility: >
+  Java 17+, FXGL 21.x. Save files stored in user home ~/.fxgl/{AppTitle}/saves/.
+category: fxgl/persistence
+tags:
+  - fxgl
+  - java
+  - javafx
+  - persistence
+  - save
+  - load
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/persistence
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Save & Load System
 
 ## Setup

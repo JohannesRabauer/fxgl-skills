@@ -5,17 +5,35 @@ description: >
   configure initSettings, initGameVars, initInput, initGame, initPhysics, initUI, and
   onUpdate. Use this skill when creating a new FXGL game, adding engine services,
   configuring window size/title, setting application mode, or wiring the game loop.
-  Triggers on: "create FXGL game", "GameApplication", "initSettings", "initGame",
-  "game loop", "FXGL project setup", "engine service", "game bootstrap".
-compatibility: Java 17+, FXGL 21.x, Maven or Gradle. JavaFX runtime must be on the module path.
+triggers:
+  - create FXGL game
+  - GameApplication
+  - initSettings
+  - initGame
+  - game loop
+  - FXGL project setup
+  - engine service
+  - game bootstrap
+compatibility: >
+  Java 17+, FXGL 21.x, Maven or Gradle. JavaFX runtime must be on the module path.
+category: fxgl/fundamentals
+tags:
+  - fxgl
+  - java
+  - javafx
+  - fundamentals
+  - game
+  - lifecycle
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/fundamentals
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Game Lifecycle
 
 ## Overview

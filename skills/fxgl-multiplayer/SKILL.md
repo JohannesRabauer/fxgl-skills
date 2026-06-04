@@ -1,23 +1,42 @@
 ---
 name: fxgl-multiplayer
 description: >
-  Add multiplayer and networking to an FXGL game — create TCP or WebSocket servers and clients
-  via NetService, replicate entity spawns/positions/destruction across clients using
-  MultiplayerService and NetworkComponent, synchronise player input, send and receive custom
-  protocol messages, handle connect/disconnect events, and download files asynchronously.
-  Use this skill when building a multiplayer game, a client-server architecture, a real-time
-  entity sync system, or any network-connected feature in FXGL.
-  Triggers on: "multiplayer", "network", "NetService", "MultiplayerService", "NetworkComponent",
-  "TCP server", "WebSocket", "entity replication", "server client", "online game".
-compatibility: Java 17+, FXGL 21.x. Network requires open ports and matching client/server FXGL versions.
+  Add multiplayer and networking to an FXGL game — create TCP or WebSocket servers and
+  clients via NetService, replicate entity spawns/positions/destruction across clients
+  using MultiplayerService and NetworkComponent, synchronise player input, send and
+  receive custom protocol messages, handle connect/disconnect events, and download files
+  asynchronously. Use this skill when building a multiplayer game, a client-server
+  architecture, a real-time entity sync system, or any network-connected feature in FXGL.
+triggers:
+  - multiplayer
+  - network
+  - NetService
+  - MultiplayerService
+  - NetworkComponent
+  - TCP server
+  - WebSocket
+  - entity replication
+  - server client
+  - online game
+compatibility: >
+  Java 17+, FXGL 21.x. Network requires open ports and matching client/server FXGL
+  versions.
+category: fxgl/multiplayer
+tags:
+  - fxgl
+  - java
+  - javafx
+  - multiplayer
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/multiplayer
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Multiplayer & Networking
 
 ## Architecture

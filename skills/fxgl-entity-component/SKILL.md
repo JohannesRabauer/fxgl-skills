@@ -1,22 +1,41 @@
 ---
 name: fxgl-entity-component
 description: >
-  Create and manage entities in FXGL using the Entity-Component System (ECS) — build entities
-  with EntityBuilder DSL, write EntityFactory spawners with @Spawns, author custom Component
-  subclasses, add state machines (StateComponent), queue actions (ActionComponent), and query
-  the game world. Use this skill when spawning game objects, creating enemy/player logic as
-  components, building entity factories from Tiled maps, or implementing entity behaviours.
-  Triggers on: "spawn entity", "EntityFactory", "EntityBuilder", "custom component",
-  "entity component", "StateComponent", "game object", "@Spawns".
-compatibility: Java 17+, FXGL 21.x
+  Create and manage entities in FXGL using the Entity-Component System (ECS) — build
+  entities with EntityBuilder DSL, write EntityFactory spawners with @Spawns, author
+  custom Component subclasses, add state machines (StateComponent), queue actions
+  (ActionComponent), and query the game world. Use this skill when spawning game objects,
+  creating enemy/player logic as components, building entity factories from Tiled maps, or
+  implementing entity behaviours.
+triggers:
+  - spawn entity
+  - EntityFactory
+  - EntityBuilder
+  - custom component
+  - entity component
+  - StateComponent
+  - game object
+  - @Spawns
+compatibility: >
+  Java 17+, FXGL 21.x
+category: fxgl/ecs
+tags:
+  - fxgl
+  - java
+  - javafx
+  - ecs
+  - entity
+  - component
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/ecs
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Entity-Component System
 
 ## Core Concept

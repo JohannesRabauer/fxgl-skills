@@ -2,21 +2,41 @@
 name: fxgl-audio
 description: >
   Play and manage audio in FXGL — trigger one-shot sound effects, loop background music,
-  control master and per-type volume, load sound and music assets, use the AudioPlayer service
-  directly, and speak text via platform TTS. Use this skill when adding sound effects to
-  game events, playing background music, implementing volume sliders, or integrating
-  text-to-speech dialogue in a game.
-  Triggers on: "sound effect", "background music", "AudioPlayer", "play sound", "loopBGM",
-  "music volume", "SFX", "wav", "mp3", "text to speech", "TTS", "audio".
-compatibility: Java 17+, FXGL 21.x. TTS requires fxgl-intelligence module and platform TTS engine.
+  control master and per-type volume, load sound and music assets, use the AudioPlayer
+  service directly, and speak text via platform TTS. Use this skill when adding sound
+  effects to game events, playing background music, implementing volume sliders, or
+  integrating text-to-speech dialogue in a game.
+triggers:
+  - sound effect
+  - background music
+  - AudioPlayer
+  - play sound
+  - loopBGM
+  - music volume
+  - SFX
+  - wav
+  - mp3
+  - text to speech
+  - TTS
+  - audio
+compatibility: >
+  Java 17+, FXGL 21.x. TTS requires fxgl-intelligence module and platform TTS engine.
+category: fxgl/audio
+tags:
+  - fxgl
+  - java
+  - javafx
+  - audio
 metadata:
-  author: fxgl-skills
+  author: "fxgl-skills"
   version: "1.0"
   fxgl-version: "21.1"
-  category: fxgl/audio
-allowed-tools: Read Write Edit Bash
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
 ---
-
 # FXGL Audio System
 
 ## Asset Placement

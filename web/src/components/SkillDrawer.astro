@@ -1,0 +1,123 @@
+---
+const BASE = import.meta.env.BASE_URL;
+---
+
+<div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+
+<aside id="skill-drawer" class="drawer" role="dialog" aria-modal="true" aria-label="Skill detail">
+  <div class="drawer-top">
+    <span id="drawer-badge" class="badge badge--subsystem">Subsystem</span>
+    <button class="drawer-close" id="drawer-close" aria-label="Close">✕ Close</button>
+  </div>
+
+  <h2 id="drawer-title" class="drawer-title"></h2>
+  <span id="drawer-compat" class="drawer-compat"></span>
+
+  <p class="drawer-section-label">Description</p>
+  <p id="drawer-desc" class="drawer-desc"></p>
+
+  <p class="drawer-section-label">Triggers</p>
+  <div id="drawer-triggers" class="drawer-chips"></div>
+
+  <p class="drawer-section-label">Tags</p>
+  <div id="drawer-tags" class="drawer-chips"></div>
+
+  <div class="drawer-actions">
+    <a id="drawer-detail-link" href="#" class="drawer-link">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1 8h14M8 1l7 7-7 7"/>
+      </svg>
+      View full skill page
+    </a>
+    <a id="drawer-github-link" href="#" target="_blank" rel="noopener noreferrer" class="drawer-link drawer-link--secondary">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+      View SKILL.md on GitHub
+    </a>
+  </div>
+</aside>
+
+<script>
+  const BADGE_LABELS: Record<string, string> = {
+    '2d': '2D Game',
+    '3d': '3D Game',
+    subsystem: 'Subsystem',
+    workflow: 'Workflow',
+  };
+
+  const drawer = document.getElementById('skill-drawer')!;
+  const backdrop = document.getElementById('drawer-backdrop')!;
+  const closeBtn = document.getElementById('drawer-close')!;
+
+  const badgeEl    = document.getElementById('drawer-badge')!;
+  const titleEl    = document.getElementById('drawer-title')!;
+  const compatEl   = document.getElementById('drawer-compat')!;
+  const descEl     = document.getElementById('drawer-desc')!;
+  const triggersEl = document.getElementById('drawer-triggers')!;
+  const tagsEl     = document.getElementById('drawer-tags')!;
+  const detailLink = document.getElementById('drawer-detail-link') as HTMLAnchorElement;
+  const githubLink = document.getElementById('drawer-github-link') as HTMLAnchorElement;
+
+  const BASE = import.meta.env.BASE_URL;
+
+  function chips(items: string[]): string {
+    return items.map(i => `<span class="tag">${escapeHtml(i)}</span>`).join('');
+  }
+
+  function escapeHtml(s: string): string {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function openDrawer(card: HTMLElement): void {
+    const d = card.dataset;
+    const cat = d.uiCategory ?? 'subsystem';
+
+    badgeEl.className = `badge badge--${cat}`;
+    badgeEl.textContent = BADGE_LABELS[cat] ?? cat;
+
+    titleEl.textContent  = d.title ?? '';
+    compatEl.textContent = d.compatibility ?? '';
+    descEl.textContent   = d.description ?? '';
+
+    const triggers = (d.triggers ?? '').split(', ').filter(Boolean);
+    const tags     = (d.tags ?? '').split(',').filter(Boolean);
+
+    triggersEl.innerHTML = chips(triggers.slice(0, 20));
+    tagsEl.innerHTML     = chips(tags);
+
+    detailLink.href  = `${BASE}skills/${d.name}/`;
+    githubLink.href  = `https://github.com/JohannesRabauer/fxgl-skills/blob/main/${d.path}`;
+
+    drawer.classList.add('open');
+    backdrop.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeDrawer(): void {
+    drawer.classList.remove('open');
+    backdrop.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  // Intercept card clicks to open drawer
+  document.querySelectorAll<HTMLElement>('.card-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const card = link.closest<HTMLElement>('.skill-card');
+      if (card) openDrawer(card);
+    });
+    link.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const card = link.closest<HTMLElement>('.skill-card');
+        if (card) openDrawer(card);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+</script>

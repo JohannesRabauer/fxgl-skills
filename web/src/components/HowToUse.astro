@@ -1,0 +1,68 @@
+---
+---
+
+<section class="how-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Integration</p>
+      <h2 class="section-title">Works With Your AI Tool</h2>
+      <p class="section-subtitle">
+        No vendor lock-in — clone once, use with any AI coding assistant.
+      </p>
+    </div>
+
+    <div class="how-grid">
+
+      <!-- Claude Code -->
+      <div class="how-card">
+        <div class="how-card-icon how-card-icon--claude" aria-hidden="true">🤖</div>
+        <h3 class="how-card-title">Claude Code</h3>
+        <p class="how-card-desc">
+          Reference the skills repository from your project's <code>CLAUDE.md</code>.
+          Claude will automatically read <code>index.json</code> to discover and apply relevant skills.
+        </p>
+        <pre class="how-code"
+><span class="comment"># In your project CLAUDE.md:</span>
+<span class="kw">When writing FXGL code,</span> <span class="str">first read</span>
+<span class="str">skills/index.json</span> <span class="kw">to find the</span>
+<span class="kw">relevant skill, then read</span>
+<span class="kw">the selected SKILL.md</span> <span class="kw">file.</span></pre>
+      </div>
+
+      <!-- GitHub Copilot -->
+      <div class="how-card">
+        <div class="how-card-icon how-card-icon--copilot" aria-hidden="true">⚡</div>
+        <h3 class="how-card-title">GitHub Copilot</h3>
+        <p class="how-card-desc">
+          Works automatically — the repo ships a
+          <code>.github/copilot-instructions.md</code> that Copilot reads
+          in any workspace that includes this repository.
+        </p>
+        <pre class="how-code"
+><span class="comment"># Already configured!</span>
+<span class="comment"># .github/copilot-instructions.md</span>
+<span class="comment"># is read automatically by</span>
+<span class="comment"># GitHub Copilot in VS Code,</span>
+<span class="comment"># JetBrains, and Neovim.</span></pre>
+      </div>
+
+      <!-- Cursor -->
+      <div class="how-card">
+        <div class="how-card-icon how-card-icon--cursor" aria-hidden="true">✦</div>
+        <h3 class="how-card-title">Cursor</h3>
+        <p class="how-card-desc">
+          The repo includes a Cursor rules file at
+          <code>.cursor/rules/fxgl-skills.mdc</code> that activates skill
+          selection automatically for any FXGL-related prompt.
+        </p>
+        <pre class="how-code"
+><span class="comment"># Already configured!</span>
+<span class="comment"># .cursor/rules/fxgl-skills.mdc</span>
+<span class="comment"># is loaded by Cursor when</span>
+<span class="comment"># you open a project that</span>
+<span class="comment"># includes this repository.</span></pre>
+      </div>
+
+    </div>
+  </div>
+</section>

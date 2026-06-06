@@ -1,0 +1,128 @@
+---
+import type { AnnotatedSkill } from '../types/skills';
+import SkillCard from './SkillCard.astro';
+
+interface Props {
+  skills: AnnotatedSkill[];
+}
+
+const { skills } = Astro.props;
+
+const counts = {
+  all: skills.length,
+  '2d': skills.filter(s => s.uiCategory === '2d').length,
+  '3d': skills.filter(s => s.uiCategory === '3d').length,
+  subsystem: skills.filter(s => s.uiCategory === 'subsystem').length,
+  workflow: skills.filter(s => s.uiCategory === 'workflow').length,
+};
+
+const filters = [
+  { key: 'all',       label: 'All',        count: counts.all },
+  { key: '2d',        label: '2D Games',   count: counts['2d'] },
+  { key: '3d',        label: '3D Games',   count: counts['3d'] },
+  { key: 'subsystem', label: 'Subsystems', count: counts.subsystem },
+  { key: 'workflow',  label: 'Workflow',   count: counts.workflow },
+];
+---
+
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Skill Library</p>
+      <h2 class="section-title">Browse All Skills</h2>
+      <p class="section-subtitle">
+        Filter by category or search to find the skill you need.
+      </p>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-tabs" role="tablist" aria-label="Filter skills by category">
+        {filters.map((f, i) => (
+          <button
+            class={`filter-btn${i === 0 ? ' active' : ''}`}
+            data-filter={f.key}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+          >
+            {f.label}
+            <span class="filter-count">{f.count}</span>
+          </button>
+        ))}
+      </div>
+
+      <div class="filter-right">
+        <span class="result-count" id="result-count">{skills.length} skills</span>
+        <div class="search-wrap">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="6.5" cy="6.5" r="4.5"/>
+            <path d="M10 10L14 14"/>
+          </svg>
+          <input
+            id="skill-search"
+            class="search-input"
+            type="search"
+            placeholder="Search skills…"
+            aria-label="Search skills"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-grid" id="skills-grid">
+      {skills.map(skill => <SkillCard skill={skill} />)}
+      <p class="no-results" id="no-results" aria-live="polite">
+        No skills match your search.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.skill-card'));
+  const filterBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+  const searchInput = document.getElementById('skill-search') as HTMLInputElement;
+  const noResults   = document.getElementById('no-results')!;
+  const countEl     = document.getElementById('result-count')!;
+
+  let activeFilter = 'all';
+
+  function applyFilters(): void {
+    const term = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+
+    cards.forEach(card => {
+      const matchesFilter =
+        activeFilter === 'all' || card.dataset.uiCategory === activeFilter;
+
+      const matchesSearch =
+        !term ||
+        (card.dataset.name ?? '').includes(term) ||
+        (card.dataset.title ?? '').toLowerCase().includes(term) ||
+        (card.dataset.tags ?? '').includes(term) ||
+        (card.dataset.description ?? '').toLowerCase().includes(term);
+
+      const show = matchesFilter && matchesSearch;
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+
+    noResults.classList.toggle('visible', visible === 0);
+    countEl.textContent = `${visible} skill${visible !== 1 ? 's' : ''}`;
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      activeFilter = btn.dataset.filter ?? 'all';
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+</script>

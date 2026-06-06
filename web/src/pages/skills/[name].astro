@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { skills } from '../../data/skills';
+import type { AnnotatedSkill } from '../../types/skills';
+
+export function getStaticPaths() {
+  return skills.map(skill => ({
+    params: { name: skill.name },
+    props: { skill },
+  }));
+}
+
+interface Props {
+  skill: AnnotatedSkill;
+}
+
+const { skill } = Astro.props;
+const BASE = import.meta.env.BASE_URL;
+
+const badgeLabel: Record<string, string> = {
+  '2d': '2D Game',
+  '3d': '3D Game',
+  subsystem: 'Subsystem',
+  workflow: 'Workflow',
+};
+
+const githubUrl = `https://github.com/JohannesRabauer/fxgl-skills/blob/main/${skill.path}`;
+const specificTags = skill.tags.filter(t => t !== 'fxgl' && t !== 'java');
+---
+
+<Layout
+  title={skill.title}
+  description={skill.description.slice(0, 155)}
+>
+  <div class="detail-page">
+
+    <!-- Sticky breadcrumb nav -->
+    <nav class="detail-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <div class="detail-nav-inner">
+          <a href={`${BASE}`} class="detail-nav-link">FXGL Skills</a>
+          <span aria-hidden="true">›</span>
+          <span class={`badge badge--${skill.uiCategory}`}>{badgeLabel[skill.uiCategory]}</span>
+          <span aria-hidden="true">›</span>
+          <span>{skill.title}</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container detail-body">
+
+      <!-- Header -->
+      <header class="detail-header">
+        <span class={`badge badge--${skill.uiCategory}`}>{badgeLabel[skill.uiCategory]}</span>
+        <h1 class="detail-title">{skill.title}</h1>
+        <div class="detail-meta">
+          <span class="detail-compat">{skill.compatibility}</span>
+        </div>
+      </header>
+
+      <!-- Description -->
+      <p class="detail-label">About this skill</p>
+      <p class="detail-description">{skill.description}</p>
+
+      <!-- Triggers -->
+      <p class="detail-label">Triggers (keywords that activate this skill)</p>
+      <div class="chip-list">
+        {skill.triggers.map(t => <span class="chip">{t}</span>)}
+      </div>
+
+      <!-- Tags -->
+      <p class="detail-label">Tags</p>
+      <div class="chip-list">
+        {specificTags.map(t => <span class="chip">{t}</span>)}
+      </div>
+
+      <!-- Actions -->
+      <div class="detail-actions">
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="detail-link">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          View SKILL.md on GitHub
+        </a>
+        <a href={`${BASE}`} class="detail-link detail-link--secondary">
+          ← Back to all skills
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer />
+</Layout>

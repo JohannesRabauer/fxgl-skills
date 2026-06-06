@@ -1,10 +1,5 @@
+# MCP server endpoint deployed on Render.com
+# URL: https://fxgl-skills-mcp.onrender.com/mcp
 startCommand:
-  type: stdio
-  configSchema:
-    type: object
-    properties: {}
-  commandFunction: |-
-    (config) => ({
-      command: "npx",
-      args: ["-y", "--package=fxgl-skills", "fxgl-skills-mcp"]
-    })
+  type: http
+  url: https://fxgl-skills-mcp.onrender.com/mcp

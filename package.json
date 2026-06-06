@@ -10,7 +10,8 @@
     }
   },
   "bin": {
-    "fxgl-skills-mcp": "mcp/server.js"
+    "fxgl-skills-mcp": "mcp/server.js",
+    "fxgl-skills-mcp-http": "mcp/server-http.js"
   },
   "files": [
     "skills/",

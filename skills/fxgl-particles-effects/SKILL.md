@@ -1,14 +1,16 @@
 ---
 name: fxgl-particles-effects
 description: >
-  Add particle systems and visual effects to an FXGL game — configure ParticleEmitter with
-  emission rate, size, speed, lifetime, color, and blend mode; use built-in factory
-  emitters (fire, explosion, smoke, rain); attach TrailParticleComponent for motion
-  trails; apply SlowTimeEffect for bullet-time; apply WobbleEffect for screen-shake; stack
-  multiple effects with EffectComponent; create image-to-particle animations; build
-  fireworks displays. Use this skill when adding explosions, fire, smoke, rain, motion
-  trails, impact bursts, bullet-time slow-motion, screen shake, or any particle-based
-  visual polish.
+  Add particle systems and visual effects to an FXGL game — configure ParticleEmitter
+  with function-based setters (setVelocityFunction, setAccelerationFunction,
+  setExpireFunction, setScaleFunction, setSpawnPointFunction); use built-in factory
+  emitters (fire, explosion, smoke, rain); apply image-textured particles with
+  multiplyColor / toColor; write custom per-particle physics via setControl; attach
+  TrailParticleComponent for motion trails; apply SlowTimeEffect for bullet-time;
+  apply WobbleEffect for screen-shake; stack multiple effects with EffectComponent;
+  build fireworks displays. Use this skill when adding explosions, fire, smoke, rain,
+  motion trails, impact bursts, bullet-time slow-motion, screen shake, or any
+  particle-based visual polish.
 triggers:
   - particle
   - emitter
@@ -27,6 +29,8 @@ triggers:
   - visual effect
   - fireworks
   - particle system
+  - setControl
+  - textured particles
 compatibility: >
   Java 17+, FXGL 21.x
 category: fxgl/effects
@@ -38,7 +42,7 @@ tags:
   - particles
 metadata:
   author: "fxgl-skills"
-  version: "1.0"
+  version: "1.1"
   fxgl-version: "21.1"
 allowed-tools:
   - Read
@@ -48,7 +52,7 @@ allowed-tools:
 ---
 # FXGL Particle System & Visual Effects
 
-## Built-in Emitter Factories
+## Built-in Factory Emitters
 
 FXGL ships pre-configured emitters for common effects:
 
@@ -60,69 +64,267 @@ import com.almasb.fxgl.particle.ParticleComponent;
 // Fire — orange/red upward particles
 ParticleEmitter fireEmitter = ParticleEmitters.newFireEmitter();
 
-// Explosion — outward burst, fades quickly
-ParticleEmitter explosionEmitter = ParticleEmitters.newExplosionEmitter(60); // radius px
+// Explosion — outward radial burst; radius controls spread, not particle count
+ParticleEmitter explosionEmitter = ParticleEmitters.newExplosionEmitter(80);
 
-// Smoke — grey upward, large and slow
+// Smoke — grey billowing upward
 ParticleEmitter smokeEmitter = ParticleEmitters.newSmokeEmitter();
 
-// Rain — blue/grey downward, high emission rate
-ParticleEmitter rainEmitter = ParticleEmitters.newRainEmitter();
+// Rain — covers the given pixel width
+ParticleEmitter rainEmitter = ParticleEmitters.newRainEmitter(getAppWidth() / 2);
 ```
 
-## Custom ParticleEmitter Configuration
+## Emitter Configuration — Function-Based API
+
+FXGL's `ParticleEmitter` uses **function setters** for all per-particle properties.
+There are no `setVelocityX/Y`, `setGravityX/Y`, or `setLifetime` methods.
 
 ```java
-ParticleEmitter emitter = new ParticleEmitter();
+import com.almasb.fxgl.core.math.FXGLMath;
+import javafx.geometry.Point2D;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
-// How many particles spawn per second
+ParticleEmitter emitter = ParticleEmitters.newExplosionEmitter(300);
+
+// --- emission ---
 emitter.setNumParticles(50);
-emitter.setEmissionRate(0.016);    // 1 particle per frame at 60fps
+emitter.setEmissionRate(0.86);              // 0.0–1.0; higher = more per tick
+emitter.setMaxEmissions(Integer.MAX_VALUE); // default; use a finite int for one-shot
 
-// Particle size
-emitter.setSize(2.0, 8.0);         // random between min and max
+// --- size ---
+emitter.setSize(1, 24);                     // random between min and max (pixels)
 
-// Speed (pixels per second)
-emitter.setVelocityX(-20, 20);     // horizontal spread
-emitter.setVelocityY(-150, -80);   // upward motion
+// --- velocity: Function<Integer, Point2D> (i = particle index) ---
+emitter.setVelocityFunction(i -> FXGLMath.randomPoint2D().multiply(random(1, 45)));
 
-// Lifetime (seconds)
-emitter.setLifetime(0.5, 1.5);
+// --- acceleration: Supplier<Point2D> ---
+emitter.setAccelerationFunction(() -> new Point2D(0, 9.8)); // downward gravity
 
-// Color — static or interpolated
+// --- scale delta per frame: Function<Integer, Point2D> ---
+emitter.setScaleFunction(i -> FXGLMath.randomPoint2D().multiply(0.01));
+
+// --- lifetime: Function<Integer, Duration> ---
+emitter.setExpireFunction(i -> Duration.seconds(random(0.25, 2.5)));
+
+// --- spawn offset from entity origin: Function<Integer, Point2D> ---
+emitter.setSpawnPointFunction(i -> new Point2D(random(-5, 5), random(-5, 5)));
+
+// --- color ---
 emitter.setStartColor(Color.YELLOW);
-emitter.setEndColor(Color.color(1, 0, 0, 0));   // fade to transparent red
+emitter.setEndColor(Color.color(1, 0, 0, 0));  // fade to transparent
 
-// Blend mode (ADD creates glow; SRC_OVER is normal)
-emitter.setBlendMode(BlendMode.ADD);
+// --- blend mode ---
+emitter.setBlendMode(BlendMode.ADD);           // ADD = glow; SRC_OVER = normal
 
-// Optional: gravity
-emitter.setGravityX(0);
-emitter.setGravityY(50);   // pull downward
+// --- rotation ---
+emitter.setAllowParticleRotation(true);
+
+// --- interpolation curve ---
+emitter.setInterpolator(Interpolators.EXPONENTIAL.EASE_OUT());
 ```
 
-## Spawning a One-Shot Burst (Explosion)
+## Attaching an Emitter to an Entity
 
 ```java
-// One-shot: attach emitter, auto-remove entity after duration
-ParticleEmitter explosion = ParticleEmitters.newExplosionEmitter(80);
+import com.almasb.fxgl.particle.ParticleComponent;
 
-Entity burst = entityBuilder()
-        .at(hitX, hitY)
-        .with(new ParticleComponent(explosion))
-        .with(new ExpireCleanComponent(Duration.seconds(1.0)))
-        .buildAndAttach();
-```
-
-## Spawning a Continuous Effect (Fire)
-
-```java
-// Continuous: attach to a world position, runs indefinitely
+// Continuous effect — lives as long as the entity
 entityBuilder()
         .at(torchX, torchY)
         .with(new ParticleComponent(ParticleEmitters.newFireEmitter()))
         .buildAndAttach();
-// Remove by calling entity.removeFromWorld() when no longer needed
+```
+
+## One-Shot Burst (Explosion / Impact)
+
+```java
+import com.almasb.fxgl.dsl.components.ExpireCleanComponent;
+
+ParticleEmitter burst = ParticleEmitters.newExplosionEmitter(80);
+burst.setBlendMode(BlendMode.ADD);
+burst.setStartColor(FXGLMath.randomColor());
+burst.setEndColor(Color.color(1, 1, 0, 0));
+burst.setExpireFunction(i -> Duration.seconds(random(1.25, 2.5)));
+
+entityBuilder()
+        .at(hitX, hitY)
+        .with(new ParticleComponent(burst))
+        .with(new ExpireCleanComponent(Duration.seconds(3)).animateOpacity())
+        .zIndex(100)
+        .buildAndAttach();
+// ExpireCleanComponent is required — without it the entity stays in the world forever.
+```
+
+## Image-Textured Particles
+
+Particles can use a source image instead of a solid rectangle.
+Use `texture().multiplyColor(color)` to tint while preserving shape, or
+`texture().toColor(color)` to fully recolor.
+
+```java
+import javafx.scene.paint.Color;
+
+Color c = FXGLMath.randomColor();
+
+// Tint: preserves the image shape, multiplies each pixel by the color
+emitter.setSourceImage(texture("particles/flare_01.png", 64, 64).multiplyColor(c));
+
+// Flat recolor: replaces all non-transparent pixels with the given color
+emitter.setSourceImage(texture("particles/rain.png").toColor(Color.YELLOW));
+```
+
+Available built-in sprite names (under `assets/textures/particles/`):
+`circle_01–05`, `dirt_01–03`, `fire_01–02`, `flame_01–06`, `flare_01`,
+`light_01–03`, `magic_01–05`, `muzzle_01–05`, `scorch_01–03`, `scratch_01`,
+`slash_01–04`, `smoke_01–10`, `spark_01–07`, `star_01–09`,
+`symbol_01–02`, `trace_01–07`, `twirl_01–03`, `window_01–04`
+
+## Custom Per-Particle Physics — `setControl`
+
+`setControl` receives a `Consumer<Particle>` called **every frame for every live particle**.
+Use the mutable `Particle` fields to implement noise fields, attractors, boundary bounce, etc.
+
+```java
+import com.almasb.fxgl.core.math.Vec2;
+
+emitter.setControl(p -> {
+    // Noise-field steering
+    double noiseValue = FXGLMath.noise2D(p.position.x * 0.002 * t,
+                                          p.position.y * 0.002 * t);
+    double angle = FXGLMath.toDegrees((noiseValue + 1) * Math.PI * 1.5) % 360.0;
+
+    Vec2 v = Vec2.fromAngle(angle).normalizeLocal().mulLocal(FXGLMath.random(1.0, 25));
+
+    // Blend current velocity with noise direction
+    p.velocity.x = p.velocity.x * 0.8f + v.x * 0.2f;
+    p.velocity.y = p.velocity.y * 0.8f + v.y * 0.2f;
+});
+```
+
+Attractor pattern — particles are drawn toward the entity's position:
+
+```java
+emitter.setControl(p -> {
+    Vec2 toEntity = new Vec2(
+        (float)(entity.getX() - p.position.x),
+        (float)(entity.getY() - p.position.y)
+    );
+    double dist2 = Math.max(10, toEntity.lengthSquared());
+    double power = 250.0 / Math.min(dist2, 1600) * FXGLMath.random(1, 4);
+    p.acceleration.set(toEntity.normalizeLocal().mulLocal((float) power));
+});
+```
+
+## Smoke Emitter — Color Configuration
+
+The smoke emitter uses `setStartColor` / `setEndColor` instead of a source image:
+
+```java
+ParticleEmitter smoke = ParticleEmitters.newSmokeEmitter();
+smoke.setBlendMode(BlendMode.SRC_OVER);
+smoke.setSize(15, 30);
+smoke.setNumParticles(10);
+smoke.setEmissionRate(0.25);
+smoke.setStartColor(Color.color(0.6, 0.55, 0.5, 0.47));
+smoke.setEndColor(Color.BLACK);
+smoke.setExpireFunction(i -> Duration.seconds(16));
+smoke.setVelocityFunction(i -> new Point2D(FXGLMath.randomDouble() - 0.5, 0));
+```
+
+## Rain Effect — World-Wide Atmosphere
+
+```java
+ParticleEmitter rain = ParticleEmitters.newRainEmitter(getAppWidth() / 2);
+rain.setSourceImage(texture("rain.png").multiplyColor(Color.BLUE));
+
+entityBuilder()
+        .with(new ParticleComponent(rain))
+        .buildAndAttach();
+
+// Second lane with different color and interpolator
+ParticleEmitter rain2 = ParticleEmitters.newRainEmitter(getAppWidth() / 2);
+rain2.setSourceImage(texture("rain.png").toColor(Color.YELLOW));
+rain2.setInterpolator(Interpolators.EXPONENTIAL.EASE_OUT());
+
+entityBuilder()
+        .at(getAppWidth() / 2, 0)
+        .with(new ParticleComponent(rain2))
+        .buildAndAttach();
+```
+
+## Fireworks Display
+
+```java
+import com.almasb.fxgl.dsl.components.ProjectileComponent;
+
+// Launch a rocket every 150ms
+run(() -> spawnRocket(new Point2D(random(0, getAppWidth() - 80), getAppHeight())),
+    Duration.seconds(0.15));
+
+private void spawnRocket(Point2D origin) {
+    Color color = FXGLMath.randomColor().brighter().brighter();
+
+    // Rising trail uses fire emitter with star texture
+    ParticleEmitter trail = ParticleEmitters.newFireEmitter();
+    trail.setNumParticles(15);
+    trail.setEmissionRate(0.5);
+    trail.setSize(1, 24);
+    trail.setSpawnPointFunction(i -> new Point2D(random(-1, 1), random(-1, 1)));
+    trail.setExpireFunction(i -> Duration.seconds(random(0.25, 0.6)));
+    trail.setBlendMode(BlendMode.SRC_OVER);
+    trail.setSourceImage(texture("particles/star_04.png", 32, 32).multiplyColor(Color.YELLOW));
+    trail.setAllowParticleRotation(true);
+
+    Entity rocket = entityBuilder()
+            .at(origin)
+            .with(new ProjectileComponent(new Point2D(0, -1), 750))
+            .with(new ParticleComponent(trail))
+            .buildAndAttach();
+
+    // Explode after random flight time
+    runOnce(() -> {
+        explode(rocket.getPosition(), color);
+        rocket.removeFromWorld();
+    }, Duration.seconds(random(0.4, 0.7)));
+}
+
+private void explode(Point2D pos, Color color) {
+    ParticleEmitter burst = ParticleEmitters.newExplosionEmitter(random(50, 150));
+    burst.setExpireFunction(i -> Duration.seconds(random(1.25, 2.5)));
+    burst.setInterpolator(Interpolators.EXPONENTIAL.EASE_OUT());
+    burst.setAccelerationFunction(() -> new Point2D(random(1, 1.5), random(1, 35.5)));
+    burst.setBlendMode(BlendMode.ADD);
+    burst.setSize(8, 32);
+    burst.setAllowParticleRotation(false);
+    burst.setSourceImage(texture("particles/flare_01.png", 64, 64).multiplyColor(color));
+
+    entityBuilder()
+            .at(pos)
+            .with(new ParticleComponent(burst))
+            .with(new ExpireCleanComponent(Duration.seconds(3)).animateOpacity())
+            .zIndex(100)
+            .buildAndAttach();
+}
+```
+
+## Entity Scale Sync for Scaled Entities
+
+When the host entity is scaled, keep particle origin in sync:
+
+```java
+emitter.setEntityScaleFunction(() -> new Point2D(1.75, 1.75));
+emitter.setScaleOriginFunction(i -> new Point2D(12, 32));
+
+var e = entityBuilder()
+        .at(250, 250)
+        .viewWithBBox("brick.png")
+        .scale(1.75, 1.75)
+        .with(new ParticleComponent(emitter))
+        .buildAndAttach();
+
+e.getTransformComponent().setScaleOrigin(new Point2D(12, 32));
 ```
 
 ## TrailParticleComponent — Motion Trail
@@ -130,66 +332,36 @@ entityBuilder()
 ```java
 import com.almasb.fxgl.particle.TrailParticleComponent;
 
-// Configure a small emitter for the trail particles
 ParticleEmitter trailEmitter = new ParticleEmitter();
 trailEmitter.setNumParticles(1);
-trailEmitter.setSize(4.0, 4.0);
-trailEmitter.setLifetime(0.3, 0.6);
+trailEmitter.setSize(4, 4);
+trailEmitter.setExpireFunction(i -> Duration.seconds(random(0.3, 0.6)));
 trailEmitter.setStartColor(Color.CYAN);
 trailEmitter.setEndColor(Color.color(0, 1, 1, 0));
 trailEmitter.setBlendMode(BlendMode.ADD);
 
-// Attach to player — spawns a particle at the entity's position every 30ms
-TrailParticleComponent trail = new TrailParticleComponent(trailEmitter, Duration.millis(30));
-player.addComponent(trail);
+// Spawns one particle at the entity's position every 30ms
+player.addComponent(new TrailParticleComponent(trailEmitter, Duration.millis(30)));
 ```
 
-## EffectComponent — Stack Multiple Effects
+## EffectComponent — Stackable Effects
 
 ```java
 import com.almasb.fxgl.entity.component.EffectComponent;
 import com.almasb.fxgl.effect.SlowTimeEffect;
 import com.almasb.fxgl.effect.WobbleEffect;
 
-// Add EffectComponent to any entity (or the player)
 entity.addComponent(new EffectComponent());
 
-// Start an effect — duration-based, expires automatically
 EffectComponent fx = entity.getComponent(EffectComponent.class);
+
+// Bullet time — scales tpf for all entity onUpdate() calls (not timers or JavaFX)
 fx.startEffect(new SlowTimeEffect(Duration.seconds(3)));
 
-// Multiple effects stack and expire independently
-fx.startEffect(new WobbleEffect(Duration.seconds(1)));
+// Screen shake — sine-wave positional offset; best applied to camera anchor entity
+fx.startEffect(new WobbleEffect(Duration.millis(500)));
 
-// Inspect active effects
-ObservableList<Effect> active = fx.getEffects();
-```
-
-## SlowTimeEffect — Bullet Time
-
-```java
-// SlowTimeEffect reduces the tpf multiplier for all entities in the world.
-// Duration.seconds(3) → 3 seconds of slow motion, then auto-restores.
-
-onCollisionBegin(EntityType.PLAYER, EntityType.POWERUP, (player, powerup) -> {
-    powerup.removeFromWorld();
-    player.getComponent(EffectComponent.class)
-          .startEffect(new SlowTimeEffect(Duration.seconds(4)));
-    play("sounds/slowmo.wav");
-});
-```
-
-## WobbleEffect — Screen Shake
-
-```java
-// WobbleEffect applies a sine-wave offset to the entity's position.
-// Attach it to the camera anchor entity for a screen-shake feel.
-
-onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY_BULLET, (player, bullet) -> {
-    bullet.removeFromWorld();
-    player.getComponent(EffectComponent.class)
-          .startEffect(new WobbleEffect(Duration.millis(500)));
-});
+// Effects stack and expire independently
 ```
 
 ## Custom Effect
@@ -201,18 +373,16 @@ public class BurnEffect extends AbstractEffect {
     private double damageTimer = 0;
 
     public BurnEffect() {
-        super(Duration.seconds(5));   // effect lasts 5 seconds
+        super(Duration.seconds(5));
     }
 
     @Override
     public void onStart(Entity entity) {
-        // Called once when effect begins — add visual indicator
-        entity.getViewComponent().addChild(new ImageView("burn-icon.png"));
+        // add burn visual indicator
     }
 
     @Override
     public void onUpdate(Entity entity, double tpf) {
-        // Called every frame during effect
         damageTimer += tpf;
         if (damageTimer >= 0.5) {
             damageTimer = 0;
@@ -222,124 +392,26 @@ public class BurnEffect extends AbstractEffect {
 
     @Override
     public void onEnd(Entity entity) {
-        // Called once when effect expires or is manually stopped
-        entity.getViewComponent().clearChildren();
+        // remove indicator
     }
-}
-```
-
-## Rain Effect (World-Wide)
-
-```java
-// Position rain emitter at the top of the viewport, wide spread
-ParticleEmitter rain = ParticleEmitters.newRainEmitter();
-rain.setVelocityX(-10, 10);
-rain.setVelocityY(300, 500);
-rain.setNumParticles(200);
-rain.setEmissionRate(0.016);   // every frame
-
-entityBuilder()
-        .at(getAppWidth() / 2.0, -10)
-        .with(new ParticleComponent(rain))
-        .buildAndAttach();
-```
-
-## Fireworks Display
-
-```java
-// Schedule repeated rocket launches
-run(() -> launchFirework(), Duration.seconds(0.5));
-
-private void launchFirework() {
-    // Rocket rises from bottom
-    Entity rocket = entityBuilder()
-            .at(FXGLMath.random(100, getAppWidth() - 100), getAppHeight())
-            .with(new ProjectileComponent(new Point2D(0, -1), 400))
-            .with(new ExpireCleanComponent(Duration.seconds(1.5)) {
-                @Override
-                public void onExpire() {
-                    explode(entity.getX(), entity.getY());
-                }
-            })
-            .buildAndAttach();
-}
-
-private void explode(double x, double y) {
-    // Colorful explosion burst
-    ParticleEmitter burst = ParticleEmitters.newExplosionEmitter(100);
-    burst.setStartColor(FXGLMath.randomColor());
-    burst.setEndColor(Color.color(1, 1, 0, 0));
-    burst.setGravityY(80);   // particles fall after explosion
-
-    entityBuilder()
-            .at(x, y)
-            .with(new ParticleComponent(burst))
-            .with(new ExpireCleanComponent(Duration.seconds(1.5)))
-            .buildAndAttach();
-
-    play("sounds/firework_pop.wav");
-}
-```
-
-## Image-to-Particles Animation
-
-```java
-// Disintegrate an image into particles — useful for dramatic destruction
-public void disintegrate(Entity entity) {
-    Image image = entity.getViewComponent().getChildren().get(0)
-                        .snapshot(null, null);
-    int w = (int) image.getWidth();
-    int h = (int) image.getHeight();
-
-    PixelReader reader = image.getPixelReader();
-
-    for (int px = 0; px < w; px += 2) {     // sample every 2 pixels for performance
-        for (int py = 0; py < h; py += 2) {
-            Color color = reader.getColor(px, py);
-            if (color.getOpacity() < 0.1) continue;
-
-            double worldX = entity.getX() + px;
-            double worldY = entity.getY() + py;
-
-            ParticleEmitter pxEmitter = new ParticleEmitter();
-            pxEmitter.setNumParticles(1);
-            pxEmitter.setEmissionRate(1.0);
-            pxEmitter.setSize(2.0, 2.0);
-            pxEmitter.setLifetime(0.5, 1.5);
-            pxEmitter.setStartColor(color);
-            pxEmitter.setEndColor(Color.color(color.getRed(), color.getGreen(), color.getBlue(), 0));
-            pxEmitter.setVelocityX(-80, 80);
-            pxEmitter.setVelocityY(-120, -40);
-            pxEmitter.setGravityY(60);
-
-            entityBuilder()
-                    .at(worldX, worldY)
-                    .with(new ParticleComponent(pxEmitter))
-                    .with(new ExpireCleanComponent(Duration.seconds(1.5)))
-                    .buildAndAttach();
-        }
-    }
-    entity.removeFromWorld();
 }
 ```
 
 ## Gotchas
 
-- **`ExpireCleanComponent` is required for one-shot emitters** — without it the particle entity
-  stays in the world forever consuming memory. For bursts always pair them together.
-- **`BlendMode.ADD` creates glow** but washes out on white backgrounds. Switch to
-  `BlendMode.SRC_OVER` for effects on light-colored scenes.
-- **TrailParticleComponent spawns child entities** in the world — each trail particle is its
-  own entity with `ExpireCleanComponent`. High emission rates with many moving entities can
-  push entity counts into the thousands. Profile if FPS drops.
-- **EffectComponent must be on the entity before calling `startEffect()`** — adding it after
-  and immediately calling `startEffect()` in the same frame is safe, but calling `getComponent`
-  before `addComponent` throws.
-- **SlowTimeEffect affects `tpf` passed to all `Component.onUpdate()` calls** — it does not
-  affect timers (`run()`, `runOnce()`), UI, or JavaFX animations. Those continue at real time.
-- **`newExplosionEmitter(radius)` — the radius controls spread**, not the number of particles.
-  Increase `setNumParticles()` independently for a denser explosion.
-- **Image-to-particles is expensive** for large images. Downsample (sample every 2-4 pixels)
-  and cap the total particle count to stay under ~2000 particles per disintegration.
-- **ParticleEmitter color functions** — you can supply a `BiFunction<Integer, Double, Color>`
-  via `setColorFunction()` to compute color per-particle per-frame for gradient or animated effects.
+- **`ExpireCleanComponent` is mandatory for one-shot emitters.** Without it the entity
+  persists forever consuming memory. Always pair with burst emitters.
+- **`BlendMode.ADD` washes out on light backgrounds.** Switch to `BlendMode.SRC_OVER`
+  for effects on non-black scenes.
+- **No `setVelocityX/Y`, `setGravityX/Y`, or `setLifetime` methods exist.** Use
+  `setVelocityFunction`, `setAccelerationFunction`, and `setExpireFunction` instead.
+- **`newRainEmitter` takes a width argument** — `newRainEmitter(int widthPx)`. Calling it
+  without an argument compiles but uses a zero-width lane.
+- **`setControl` runs every frame per particle** — keep its lambda fast. Avoid allocations
+  inside it; use `Vec2.set()` to mutate rather than creating new objects.
+- **`TrailParticleComponent` spawns one entity per particle** — high emission intervals with
+  many fast entities push entity counts into the thousands. Profile if FPS drops.
+- **`SlowTimeEffect` does not affect `run()` / `runOnce()` timers**, JavaFX transitions, or
+  UI animations. Only entity `Component.onUpdate()` sees the scaled `tpf`.
+- **`newExplosionEmitter(radius)` — `radius` controls spread width**, not particle count.
+  Increase `setNumParticles()` separately for a denser burst.

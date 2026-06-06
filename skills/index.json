@@ -1128,7 +1128,7 @@
       "name": "fxgl-particles-effects",
       "title": "FXGL Particle System & Visual Effects",
       "path": "skills/fxgl-particles-effects/SKILL.md",
-      "description": "Add particle systems and visual effects to an FXGL game — configure ParticleEmitter with emission rate, size, speed, lifetime, color, and blend mode; use built-in factory emitters (fire, explosion, smoke, rain); attach TrailParticleComponent for motion trails; apply SlowTimeEffect for bullet-time; apply WobbleEffect for screen-shake; stack multiple effects with EffectComponent; create image-to-particle animations; build fireworks displays. Use this skill when adding explosions, fire, smoke, rain, motion trails, impact bursts, bullet-time slow-motion, screen shake, or any particle-based visual polish.",
+      "description": "Add particle systems and visual effects to an FXGL game — configure ParticleEmitter with function-based setters (setVelocityFunction, setAccelerationFunction, setExpireFunction, setScaleFunction, setSpawnPointFunction); use built-in factory emitters (fire, explosion, smoke, rain); apply image-textured particles with multiplyColor / toColor; write custom per-particle physics via setControl; attach TrailParticleComponent for motion trails; apply SlowTimeEffect for bullet-time; apply WobbleEffect for screen-shake; stack multiple effects with EffectComponent; build fireworks displays. Use this skill when adding explosions, fire, smoke, rain, motion trails, impact bursts, bullet-time slow-motion, screen shake, or any particle-based visual polish.",
       "triggers": [
         "particle",
         "emitter",
@@ -1146,7 +1146,11 @@
         "bullet time",
         "visual effect",
         "fireworks",
-        "particle system"
+        "particle system",
+        "setControl",
+        "textured particles",
+        "attractor",
+        "noise field"
       ],
       "compatibility": "Java 17+, FXGL 21.x",
       "category": "fxgl/effects",
@@ -1159,7 +1163,7 @@
       ],
       "metadata": {
         "author": "fxgl-skills",
-        "version": "1.0",
+        "version": "1.1",
         "fxgl-version": "21.1"
       },
       "allowedTools": [

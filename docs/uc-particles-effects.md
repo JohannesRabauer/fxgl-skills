@@ -1,7 +1,8 @@
 # Use Cases — Particle System & Visual Effects
 
-Covers particle emitters, the particle system, trail particles, slow-time effect, wobble effect,
-and effect composition via EffectComponent.
+Covers ParticleEmitter configuration, built-in factory emitters, image-textured particles,
+custom per-particle control functions, TrailParticleComponent, EffectComponent, and
+screen-level effects (SlowTimeEffect, WobbleEffect).
 
 ## Actors and Primary Use Cases
 
@@ -9,102 +10,139 @@ and effect composition via EffectComponent.
 graph LR
     Dev([Developer])
 
-    Dev --> UC1["UC-FX-1\nSpawn particle emitter at position"]
-    Dev --> UC2["UC-FX-2\nAttach continuous trail to entity"]
-    Dev --> UC3["UC-FX-3\nCreate explosion / impact burst"]
-    Dev --> UC4["UC-FX-4\nCreate fire / smoke / rain emitter"]
-    Dev --> UC5["UC-FX-5\nApply slow-time effect (bullet time)"]
-    Dev --> UC6["UC-FX-6\nApply wobble / screen-shake effect"]
-    Dev --> UC7["UC-FX-7\nStack multiple effects on entity"]
-    Dev --> UC8["UC-FX-8\nRemove / expire effect after duration"]
-    Dev --> UC9["UC-FX-9\nConvert image to particle animation"]
-    Dev --> UC10["UC-FX-10\nCreate fireworks display"]
+    Dev --> UC1["UC-FX-1\nSpawn one-shot burst at impact point"]
+    Dev --> UC2["UC-FX-2\nAttach continuous emitter to entity"]
+    Dev --> UC3["UC-FX-3\nColorize particles with source image texture"]
+    Dev --> UC4["UC-FX-4\nCustom per-particle physics via setControl"]
+    Dev --> UC5["UC-FX-5\nAttach motion trail to moving entity"]
+    Dev --> UC6["UC-FX-6\nApply slow-time (bullet-time) effect"]
+    Dev --> UC7["UC-FX-7\nApply wobble / screen-shake effect"]
+    Dev --> UC8["UC-FX-8\nStack multiple effects on entity"]
+    Dev --> UC9["UC-FX-9\nBuild fireworks display (rocket + burst)"]
+    Dev --> UC10["UC-FX-10\nWorld-wide rain or smoke atmosphere"]
 ```
 
-## Particle Emitter Configuration
+## Emitter Configuration API
 
 ```mermaid
 flowchart TD
-    PE["ParticleEmitter"] --> Props["Configure properties\n• numParticles\n• emissionRate\n• size (min/max)\n• speed (min/max)\n• lifetime (min/max)\n• color + colorFunction\n• blendMode"]
-    Props --> Emitters["Pre-built factory methods:\nParticleEmitters.newFireEmitter()\nParticleEmitters.newExplosionEmitter(radius)\nParticleEmitters.newSmokeEmitter()\nParticleEmitters.newRainEmitter()"]
+    PE["ParticleEmitter\n(or factory from ParticleEmitters)"] --> Count["setNumParticles(int)\nsetEmissionRate(0.0–1.0)\nsetMaxEmissions(int MAX_VALUE = infinite)"]
+    PE --> Size["setSize(double min, double max)"]
+    PE --> FnV["setVelocityFunction(\n  Function<Integer, Point2D>\n)"]
+    PE --> FnA["setAccelerationFunction(\n  Supplier<Point2D>\n)"]
+    PE --> FnE["setExpireFunction(\n  Function<Integer, Duration>\n)"]
+    PE --> FnS["setScaleFunction(\n  Function<Integer, Point2D>\n) — per-particle scale delta"]
+    PE --> FnSP["setSpawnPointFunction(\n  Function<Integer, Point2D>\n) — offset from entity origin"]
+    PE --> Color["setStartColor(Color)\nsetEndColor(Color)"]
+    PE --> Img["setSourceImage(Image)\n— colorize via texture().multiplyColor(c)\n   or texture().toColor(c)"]
+    PE --> Blend["setBlendMode(BlendMode.ADD | SRC_OVER)"]
+    PE --> Rot["setAllowParticleRotation(boolean)"]
+    PE --> Interp["setInterpolator(Interpolators.EXPONENTIAL.EASE_OUT())"]
+    PE --> Ctrl["setControl(Consumer<Particle>)\n— per-frame per-particle override"]
 ```
 
-## Particle Emitter Spawning
+## Built-in Factory Emitters
+
+```mermaid
+graph LR
+    F["ParticleEmitters"] --> Fire["newFireEmitter()\norange/red upward, fire-shaped"]
+    F --> Expl["newExplosionEmitter(int radius)\noutward radial burst"]
+    F --> Smoke["newSmokeEmitter()\ngrey billowing upward"]
+    F --> Rain["newRainEmitter(int widthPx)\nblue-grey downward, covers width"]
+```
+
+## Attaching Emitter to Entity
 
 ```mermaid
 flowchart LR
-    A3["ParticleComponent pc\n= new ParticleComponent(emitter)"] --> Attach2["entityBuilder()\n.at(x, y)\n.with(pc)\n.buildAndAttach()"]
-    Attach2 --> Expire2["add ExpireCleanComponent\nto auto-remove after burst"]
-    OneShot["one-shot burst"] --> Expire2
-    Continuous2["continuous trail\n(follow entity)"] --> NoExpire["no expire component needed"]
+    Emitter["configured ParticleEmitter"] --> PC["new ParticleComponent(emitter)"]
+    PC --> EB["entityBuilder()\n.at(x, y)\n.with(particleComponent)\n.buildAndAttach()"]
+    EB --> OneShot{"one-shot or\ncontinuous?"}
+    OneShot -->|one-shot| Expire[".with(new ExpireCleanComponent(duration))\n— auto-removes entity after burst"]
+    OneShot -->|continuous| Bind["bind entity position to target\n e.xProperty().bind(...)"]
 ```
 
-## TrailParticleComponent (Entity Trail)
-
-```mermaid
-flowchart LR
-    TPC["TrailParticleComponent\n(emitter, durationBetweenParticles)"] --> With["entity.addComponent(trailComponent)"]
-    With --> AutoTrail["spawns particles at entity position\nevery N milliseconds\ncreates motion trail effect"]
-```
-
-## EffectComponent & Effect Stacking
-
-```mermaid
-flowchart TD
-    EC["EffectComponent"] --> Add5["entity.addComponent(new EffectComponent())"]
-    Add5 --> Apply["effectComponent.startEffect(new SlowTimeEffect(duration))"]
-    Apply --> Stack2["Multiple effects stack\nand expire independently"]
-    Stack2 --> List2["effectComponent.effects() → observable list"]
-```
-
-## Built-in Effects
-
-```mermaid
-graph TD
-    Effects["Built-in Effects"] --> SlowTime["SlowTimeEffect\n• slows all entity update speeds\n• duration-based\n• extends AbstractEffect"]
-    Effects --> Wobble["WobbleEffect\n• applies sine-wave offset to entity position\n• creates screen-shake / jello feeling"]
-    Effects --> Custom3["Custom Effect\nextend AbstractEffect\noverride onStart() onEnd() onUpdate(tpf)"]
-```
-
-## Slow-Time Effect Use Case
+## UC-FX-1: One-Shot Burst at Impact Point
 
 ```mermaid
 sequenceDiagram
-    participant Dev as Developer
-    participant EffectComp as EffectComponent
-    participant Entity4 as Game Entities
+    participant Col as Collision Handler
+    participant World as Game World
 
-    Dev->>EffectComp: startEffect(new SlowTimeEffect(Duration.seconds(3)))
-    EffectComp->>Entity4: reduce tpf multiplier to 0.2
-    Note over Entity4: everything appears in slow motion
-    EffectComp->>EffectComp: after 3 seconds effect expires
-    EffectComp->>Entity4: restore normal tpf multiplier
+    Col->>World: spawn entity at (hitX, hitY)
+    Note over World: entityBuilder().at(hitX, hitY)\n.with(ParticleComponent(explosion))\n.with(ExpireCleanComponent(Duration.seconds(1)))\n.buildAndAttach()
+    World-->>Col: entity auto-removed after 1s
 ```
 
-## Image-to-Particles Animation
+## UC-FX-3: Textured Particles with Colorization
 
 ```mermaid
 flowchart TD
-    Img["Image / Texture"] --> Pixels["sample pixel colors from image"]
-    Pixels --> Particles2["spawn particle per pixel\nat corresponding screen position"]
-    Particles2 --> Anim3["animate particles FROM image positions\nTO random/explosion positions\n(or reverse: assemble from chaos)"]
-    Anim3 --> Examples2["Examples:\n• logo reveal effect\n• pixelated explosion\n• image disintegration"]
+    Tex["texture('particles/flare_01.png', 64, 64)"] --> MC["multiplyColor(color)\n— tints while preserving shape"]
+    Tex --> TC["toColor(color)\n— fully recolors to flat tone"]
+    MC --> SI["emitter.setSourceImage(colorizedImage)"]
+    TC --> SI
+    SI --> Result["particles render as image\ninstead of solid rectangle"]
 ```
 
-## Fireworks Use Case
+Available particle sprite names (from `assets/textures/particles/`):
+`circle_01–05`, `dirt_01–03`, `fire_01–02`, `flame_01–06`, `flare_01`, `light_01–03`,
+`magic_01–05`, `muzzle_01–05`, `scorch_01–03`, `spark_01–07`, `star_01–09`,
+`smoke_01–10`, `slash_01–04`, `twirl_01–03`, `trace_01–07`, `symbol_01–02`, `window_01–04`
+
+## UC-FX-4: Custom Per-Particle Physics (setControl)
+
+```mermaid
+flowchart TD
+    Ctrl["emitter.setControl(Consumer<Particle> fn)"] --> Loop["called every frame for each live particle"]
+    Loop --> Access["Particle fields:\n• p.position (Vec2)\n• p.velocity (Vec2)\n• p.acceleration (Vec2)"]
+    Access --> UseCases["Use cases:\n• noise-field steering\n• attractor/repulsor\n• boundary bounce\n• swarm behaviour"]
+```
+
+## UC-FX-5: Motion Trail on Moving Entity
 
 ```mermaid
 flowchart LR
-    Timer2["run(interval)"] --> Launch["spawn rocket entity\nat bottom of screen"]
-    Launch --> Rise["rocket moves upward"]
-    Rise --> Explode["on expire:\nspawn ParticleComponent\nnewExplosionEmitter with colorful particles"]
-    Explode --> Gravity2["particles fall with gravity\nfade out over lifetime"]
+    Trail["TrailParticleComponent\n(emitter, Duration.millis(interval))"] --> Add["entity.addComponent(trail)"]
+    Add --> Auto["spawns one particle at\nentity position every interval ms"]
+    Auto --> Fade["particle fades via\nsetEndColor transparent"]
 ```
 
-## Rain / Smoke Use Case
+## UC-FX-6 / UC-FX-7: EffectComponent Effects
 
 ```mermaid
 flowchart TD
-    Rain["ParticleEmitters.newRainEmitter()"] --> Config2["• emissionRate: high\n• direction: downward\n• size: small elongated\n• lifetime: 2s\n• color: blue/grey semi-transparent"]
-    Smoke["ParticleEmitters.newSmokeEmitter()"] --> Config3["• emissionRate: medium\n• direction: upward + random spread\n• size: large growing\n• lifetime: 3-5s\n• color: grey fading to transparent"]
+    EC["entity.addComponent(new EffectComponent())"] --> Start["effectComponent.startEffect(effect)"]
+    Start --> ST["SlowTimeEffect(Duration)\n— scales tpf for all entity updates\n— does NOT affect timers or JavaFX animations"]
+    Start --> WE["WobbleEffect(Duration)\n— sine-wave offset on entity position\n— best on camera anchor for screen-shake"]
+    Start --> Stack["multiple effects stack;\neach expires independently"]
 ```
+
+## UC-FX-9: Fireworks Display Pattern
+
+```mermaid
+flowchart LR
+    Timer["run(interval)"] --> Rocket["spawn rocket entity\n+ ProjectileComponent upward\n+ ExpireCleanComponent"]
+    Rocket --> Expire["on expire callback:\nspawn newExplosionEmitter at rocket position\nwith random color + ADD blend mode"]
+    Expire --> Gravity["particles arc and fall\nvia setAccelerationFunction with Y gravity"]
+```
+
+## UC-FX-10: Atmospheric Rain / Smoke
+
+```mermaid
+flowchart TD
+    Rain["ParticleEmitters.newRainEmitter(getAppWidth())"] --> Attach["entity at (0, 0) with ParticleComponent"]
+    Attach --> Colorize["emitter.setSourceImage(texture('rain.png').multiplyColor(Color.BLUE))"]
+    Smoke2["ParticleEmitters.newSmokeEmitter()"] --> SConf["setSize(15,30)\nsetNumParticles(10)\nsetEmissionRate(0.25)\nsetStartColor + setEndColor"]
+```
+
+## Gotcha Summary
+
+| Gotcha | Rule |
+|--------|------|
+| Missing `ExpireCleanComponent` | One-shot emitters leak entities forever — always pair |
+| `BlendMode.ADD` on light backgrounds | Switch to `BlendMode.SRC_OVER` |
+| High-rate `TrailParticleComponent` | Each trail particle is its own entity — profile at high counts |
+| `setControl` modifies velocity/acceleration | Do not fight the base velocity/acceleration unless you zero them first |
+| `setVelocityFunction` vs `setVelocityX/Y` | FXGL uses function-based API; `setVelocityX/Y` does not exist |
+| `SlowTimeEffect` scope | Affects entity `onUpdate()` tpf only — not `run()` timers or JavaFX |

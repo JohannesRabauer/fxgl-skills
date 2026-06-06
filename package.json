@@ -1,0 +1,31 @@
+{
+  "name": "fxgl-skills",
+  "version": "1.0.0",
+  "description": "Canonical FXGL coding skills for AI-assisted game development",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "files": [
+    "skills/",
+    "index.js",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "fxgl", "java", "javafx", "game-development", "ai",
+    "skills", "claude-code", "copilot", "cursor"
+  ],
+  "author": "Johannes Rabauer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JohannesRabauer/fxgl-skills.git"
+  },
+  "homepage": "https://johannesrabauer.github.io/fxgl-skills/",
+  "engines": {
+    "node": ">=18"
+  }
+}

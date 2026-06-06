@@ -9,11 +9,18 @@
       "types": "./index.d.ts"
     }
   },
+  "bin": {
+    "fxgl-skills-mcp": "mcp/server.js"
+  },
   "files": [
     "skills/",
     "index.js",
-    "index.d.ts"
+    "index.d.ts",
+    "mcp/"
   ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
   "keywords": [
     "fxgl", "java", "javafx", "game-development", "ai",
     "skills", "claude-code", "copilot", "cursor"

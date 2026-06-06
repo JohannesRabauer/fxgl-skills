@@ -1,12 +1,52 @@
 # FXGL Skills
 
-`fxgl-skills` is a repository of reusable **AI coding skills for FXGL**.
+Canonical, tool-agnostic coding skills for AI-assisted FXGL game development (Java 17+, FXGL 21.x).
+Compatible with Claude Code, GitHub Copilot, Cursor, and any MCP-capable AI tool.
 
-The canonical source of truth is:
+**[Browse skills →](https://johannesrabauer.github.io/fxgl-skills/)**  &nbsp;|&nbsp;  **[MCP Server →](https://smithery.ai/servers/rabauer-dev/fxgl-skills)**
 
-- `skills/*/SKILL.md` — one skill per directory, written in Markdown with YAML front matter
-- `skills/index.json` — machine-readable manifest for discovery and routing
-- `agents.md` / `AGENTS.md` — repository-level instructions for coding agents
+---
+
+## Install
+
+### Claude Code — MCP server (recommended)
+
+Gives your AI assistant direct access to all skills via `list_skills`, `get_skill`, and `search_skills` tools:
+
+```bash
+claude mcp add fxgl-skills -- npx --package=fxgl-skills -y fxgl-skills-mcp
+```
+
+Or install from [smithery.ai](https://smithery.ai/servers/rabauer-dev/fxgl-skills) with one click.
+
+### Any MCP client
+
+Point your client at the hosted endpoint:
+
+```
+https://fxgl-skills-mcp.onrender.com/mcp
+```
+
+### npm — programmatic access
+
+```bash
+npm install fxgl-skills
+```
+
+```js
+import { skills, getSkill, getSkillContent } from 'fxgl-skills';
+
+const skill = getSkill('fxgl-platformer'); // metadata + full SKILL.md content
+const all   = skills;                       // array of all skill metadata
+```
+
+### Manual — copy into your project
+
+Download [fxgl-skills.zip](https://github.com/JohannesRabauer/fxgl-skills/releases/latest/download/fxgl-skills.zip)
+and drop the `skills/` folder wherever your AI tool can read it, then point your tool at
+`skills/index.json` to start.
+
+---
 
 ## Goal
 

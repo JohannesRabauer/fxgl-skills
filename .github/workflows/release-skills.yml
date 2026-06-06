@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'skills/**'
+      - '.github/workflows/release-skills.yml'
   workflow_dispatch:
 
 permissions:

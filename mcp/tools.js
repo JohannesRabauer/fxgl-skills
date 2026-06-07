@@ -39,6 +39,14 @@ const SKILL_ITEM_SCHEMA = {
   required: ['name', 'description', 'category', 'tags'],
 };
 
+const SKILL_LIST_OUTPUT = {
+  type: 'object',
+  properties: {
+    skills: { type: 'array', items: SKILL_ITEM_SCHEMA, description: 'Array of skill metadata objects' },
+  },
+  required: ['skills'],
+};
+
 const READ_ONLY = {
   readOnlyHint:    true,
   destructiveHint: false,
@@ -67,11 +75,7 @@ export function createMcpServer() {
           properties: {},
           additionalProperties: false,
         },
-        outputSchema: {
-          type: 'array',
-          description: 'Array of skill metadata objects, one per available skill.',
-          items: SKILL_ITEM_SCHEMA,
-        },
+        outputSchema: SKILL_LIST_OUTPUT,
         annotations: READ_ONLY,
       },
       {
@@ -98,11 +102,16 @@ export function createMcpServer() {
           additionalProperties: false,
         },
         outputSchema: {
-          type: 'string',
-          description:
-            'Complete SKILL.md content in Markdown format. Begins with a YAML front matter ' +
-            'block (---) containing machine-readable metadata, followed by structured ' +
-            'implementation guidance, FXGL API usage, and Java code snippets.',
+          type: 'object',
+          properties: {
+            content: {
+              type: 'string',
+              description:
+                'Complete SKILL.md in Markdown format — YAML front matter block followed by ' +
+                'implementation guidance, FXGL API references, and Java code snippets.',
+            },
+          },
+          required: ['content'],
         },
         annotations: READ_ONLY,
       },
@@ -130,20 +139,26 @@ export function createMcpServer() {
           additionalProperties: false,
         },
         outputSchema: {
-          type: 'array',
-          description: 'Array of matching skill metadata objects, each including triggers.',
-          items: {
-            ...SKILL_ITEM_SCHEMA,
-            properties: {
-              ...SKILL_ITEM_SCHEMA.properties,
-              triggers: {
-                type: 'array',
-                items: { type: 'string' },
-                description: 'Natural-language phrases that should activate this skill',
+          type: 'object',
+          properties: {
+            skills: {
+              type: 'array',
+              description: 'Array of matching skill metadata objects, each including triggers.',
+              items: {
+                ...SKILL_ITEM_SCHEMA,
+                properties: {
+                  ...SKILL_ITEM_SCHEMA.properties,
+                  triggers: {
+                    type: 'array',
+                    items: { type: 'string' },
+                    description: 'Natural-language phrases that should activate this skill',
+                  },
+                },
+                required: [...SKILL_ITEM_SCHEMA.required, 'triggers'],
               },
             },
-            required: [...SKILL_ITEM_SCHEMA.required, 'triggers'],
           },
+          required: ['skills'],
         },
         annotations: READ_ONLY,
       },
@@ -160,7 +175,10 @@ export function createMcpServer() {
         category: s.category,
         tags: s.tags,
       }));
-      return { content: [{ type: 'text', text: JSON.stringify(rows, null, 2) }] };
+      return {
+        content: [{ type: 'text', text: JSON.stringify(rows, null, 2) }],
+        structuredContent: { skills: rows },
+      };
     }
 
     if (name === 'get_skill') {
@@ -171,7 +189,11 @@ export function createMcpServer() {
           isError: true,
         };
       }
-      return { content: [{ type: 'text', text: getSkillContent(skill.name) }] };
+      const text = getSkillContent(skill.name);
+      return {
+        content: [{ type: 'text', text }],
+        structuredContent: { content: text },
+      };
     }
 
     if (name === 'search_skills') {
@@ -186,7 +208,10 @@ export function createMcpServer() {
         tags: s.tags,
         triggers: s.triggers,
       }));
-      return { content: [{ type: 'text', text: JSON.stringify(rows, null, 2) }] };
+      return {
+        content: [{ type: 'text', text: JSON.stringify(rows, null, 2) }],
+        structuredContent: { skills: rows },
+      };
     }
 
     return {

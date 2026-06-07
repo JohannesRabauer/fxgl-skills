@@ -28,7 +28,13 @@ const httpServer = http.createServer(async (req, res) => {
 
   const { pathname } = new URL(req.url, 'http://localhost');
 
-  if (pathname === '/mcp' && req.method === 'POST') {
+  if (pathname === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: 'ok', skills: skills.length }));
+    return;
+  }
+
+  if (req.method === 'POST') {
     try {
       const body = await readBody(req);
       const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
@@ -44,13 +50,13 @@ const httpServer = http.createServer(async (req, res) => {
     return;
   }
 
-  if (pathname === '/' || pathname === '/health') {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ status: 'ok', skills: skills.length, endpoint: 'POST /mcp' }));
+  if (req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end(`FXGL Skills MCP Server — ${skills.length} skills\nPOST / for MCP protocol\n`);
     return;
   }
 
-  res.writeHead(404);
+  res.writeHead(405);
   res.end();
 });
 

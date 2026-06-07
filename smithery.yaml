@@ -5,4 +5,4 @@ homepage: https://johannesrabauer.github.io/fxgl-skills/
 icon: https://johannesrabauer.github.io/fxgl-skills/favicon.svg
 startCommand:
   type: http
-  url: https://fxgl-skills-mcp.onrender.com/mcp
+  url: https://fxgl-skills-mcp.onrender.com

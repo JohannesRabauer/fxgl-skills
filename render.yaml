@@ -4,6 +4,7 @@ services:
     runtime: node
     buildCommand: npm install
     startCommand: node mcp/server-http.js
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production

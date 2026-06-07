@@ -44,9 +44,9 @@ const httpServer = http.createServer(async (req, res) => {
     return;
   }
 
-  if (pathname === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end(`FXGL Skills MCP Server\n${skills.length} skills available\nEndpoint: POST /mcp\n`);
+  if (pathname === '/' || pathname === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: 'ok', skills: skills.length, endpoint: 'POST /mcp' }));
     return;
   }
 

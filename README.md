@@ -9,7 +9,16 @@ Compatible with Claude Code, GitHub Copilot, Cursor, and any MCP-capable AI tool
 
 ## Install
 
-### Claude Code — MCP server (recommended)
+### Claude Code — plugin marketplace (recommended)
+
+```
+/plugin marketplace add JohannesRabauer/fxgl-skills
+/plugin install fxgl-skills@fxgl-marketplace
+```
+
+Requires Claude Code 1.0.33 or later (`claude --version` to check).
+
+### Claude Code — MCP server
 
 Gives your AI assistant direct access to all skills via `list_skills`, `get_skill`, and `search_skills` tools:
 

@@ -1,0 +1,19 @@
+{
+    "name": "fxgl-marketplace",
+    "metadata": {
+        "description": "FXGL coding skills for AI-assisted Java game development"
+    },
+    "owner": {
+        "name": "Johannes Rabauer"
+    },
+    "plugins": [
+        {
+            "name": "fxgl-skills",
+            "source": {
+                "source": "github",
+                "repo": "JohannesRabauer/fxgl-skills"
+            },
+            "description": "Canonical coding skills for FXGL game development with Java 17+ and FXGL 21.x — game types, physics, AI, animation, audio, UI, and more"
+        }
+    ]
+}

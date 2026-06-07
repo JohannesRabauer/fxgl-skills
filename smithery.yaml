@@ -1,5 +1,8 @@
 # MCP server endpoint deployed on Render.com
-# URL: https://fxgl-skills-mcp.onrender.com/mcp
+name: FXGL Skills
+description: Canonical coding skills for FXGL game development with Java 17+ and FXGL 21.x — game types, physics, AI, animation, audio, UI, and more
+homepage: https://johannesrabauer.github.io/fxgl-skills/
+icon: https://johannesrabauer.github.io/fxgl-skills/favicon.svg
 startCommand:
   type: http
   url: https://fxgl-skills-mcp.onrender.com/mcp
